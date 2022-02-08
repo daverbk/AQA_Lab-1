@@ -1,0 +1,15 @@
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/bin/Debug/net6.0/doctorAppointment
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/bin/Debug/net6.0/doctorAppointment.deps.json
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/bin/Debug/net6.0/doctorAppointment.runtimeconfig.json
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/bin/Debug/net6.0/doctorAppointment.dll
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/bin/Debug/net6.0/ref/doctorAppointment.dll
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/bin/Debug/net6.0/doctorAppointment.pdb
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/obj/Debug/net6.0/doctorAppointment.csproj.AssemblyReference.cache
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/obj/Debug/net6.0/doctorAppointment.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/obj/Debug/net6.0/doctorAppointment.AssemblyInfoInputs.cache
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/obj/Debug/net6.0/doctorAppointment.AssemblyInfo.cs
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/obj/Debug/net6.0/doctorAppointment.csproj.CoreCompileInputs.cache
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/obj/Debug/net6.0/doctorAppointment.dll
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/obj/Debug/net6.0/ref/doctorAppointment.dll
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/obj/Debug/net6.0/doctorAppointment.pdb
+/Users/ksusha/RiderProjects/doctorAppointment/doctorAppointment/obj/Debug/net6.0/doctorAppointment.genruntimeconfig.cache

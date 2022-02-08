@@ -1,0 +1,15 @@
+/Users/ksusha/RiderProjects/TestProject/TestProject/bin/Debug/net6.0/TestProject
+/Users/ksusha/RiderProjects/TestProject/TestProject/bin/Debug/net6.0/TestProject.deps.json
+/Users/ksusha/RiderProjects/TestProject/TestProject/bin/Debug/net6.0/TestProject.runtimeconfig.json
+/Users/ksusha/RiderProjects/TestProject/TestProject/bin/Debug/net6.0/TestProject.dll
+/Users/ksusha/RiderProjects/TestProject/TestProject/bin/Debug/net6.0/ref/TestProject.dll
+/Users/ksusha/RiderProjects/TestProject/TestProject/bin/Debug/net6.0/TestProject.pdb
+/Users/ksusha/RiderProjects/TestProject/TestProject/obj/Debug/net6.0/TestProject.csproj.AssemblyReference.cache
+/Users/ksusha/RiderProjects/TestProject/TestProject/obj/Debug/net6.0/TestProject.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ksusha/RiderProjects/TestProject/TestProject/obj/Debug/net6.0/TestProject.AssemblyInfoInputs.cache
+/Users/ksusha/RiderProjects/TestProject/TestProject/obj/Debug/net6.0/TestProject.AssemblyInfo.cs
+/Users/ksusha/RiderProjects/TestProject/TestProject/obj/Debug/net6.0/TestProject.csproj.CoreCompileInputs.cache
+/Users/ksusha/RiderProjects/TestProject/TestProject/obj/Debug/net6.0/TestProject.dll
+/Users/ksusha/RiderProjects/TestProject/TestProject/obj/Debug/net6.0/ref/TestProject.dll
+/Users/ksusha/RiderProjects/TestProject/TestProject/obj/Debug/net6.0/TestProject.pdb
+/Users/ksusha/RiderProjects/TestProject/TestProject/obj/Debug/net6.0/TestProject.genruntimeconfig.cache
