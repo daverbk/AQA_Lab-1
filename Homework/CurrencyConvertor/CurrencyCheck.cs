@@ -7,6 +7,10 @@ namespace CurrencyConvertor
     {
         public static void CurrencyCheck()
         {
+            // Лучше создать файлик Endpoints.cs и там хранить все эндпоинты
+            // public const ServiceUrl = "https://www.nbrb.by",
+            //public const ApiPrefix = '/api'
+            // public const RubRate = "{BASE_YRL}{ApiPrefix}/exrates/rates/431",
             string[] endpoints = new string[]
             {
                 "https://www.nbrb.by/api/exrates/rates/431",
@@ -14,6 +18,11 @@ namespace CurrencyConvertor
                 "https://www.nbrb.by/api/exrates/rates/456"
             };
             
+            //Ну и этот код абсолютно бесполезный в будущем 
+            // лучше создать класс, который будет уметь отправлять запросы 
+            // передавать в него эндпоинт и возвращать респонс 
+            // Потом уже где то парсить данные 
+            // То есть разбиваем логически на методы и классы и стараемся думать о переиспользовании 
             using (var client = new HttpClient())
             {
                 for (int i = 0; i < 3; i++)

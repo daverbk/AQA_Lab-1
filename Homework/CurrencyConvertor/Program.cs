@@ -2,6 +2,7 @@
 
 namespace CurrencyConvertor
 {
+    // модификатор 
     class Program
     {
         public static void Main(string[] args)
@@ -16,9 +17,11 @@ namespace CurrencyConvertor
 
             switch (userCurrency)
             {
+                // В константы пж USD EUR etc
                 case "USD":
                     switch (exchangeCurrency)
                     {
+                        // дублирование в кейсах
                         case "EUR":
                         {
                             var result = ((pureAmount * Currencies.UsdRate) / Currencies.EurRate);
@@ -44,7 +47,9 @@ namespace CurrencyConvertor
                     {
                         case "RUB":
                         {
+                            // лишние скобки в выражении 
                             var result = (((pureAmount * Currencies.EurRate) * 100) / Currencies.RubRate);
+                            // 0.3М тоже непонятно что это 
                             result -= result * 0.03M;
                             Console.WriteLine($"Результат: {result:0.00} RUB");
                             break;

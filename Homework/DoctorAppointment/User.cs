@@ -1,8 +1,10 @@
 using System;
 using System.Linq;
 
+// Неймспейсы проверь 
 public class User
 {
+    // Почему они налабл? 
     private static string? _userName;
     private static string? _userSurame;
     
@@ -25,6 +27,7 @@ public class User
 
     public static string? Surname 
     {
+        // Лучше через стрелочную 
         get
         {
             return _userSurame;
@@ -32,6 +35,7 @@ public class User
 
         set
         {
+            // опять дублирование 
             while (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) ||  char.IsLower(value[0]) || value.Any(char.IsDigit))
             {
                 Console.WriteLine("Введите фамилию с большой буквы. Имя не может состоять из цифр.");
@@ -51,6 +55,8 @@ public class User
             Convert.ToInt32(Console.ReadLine()), 
             Convert.ToInt32(Console.ReadLine()), 
             Convert.ToInt32(Console.ReadLine()),
+            // Константы для чисел. Код должен читаться легко и любой человек должен понимать что в нем происходит,
+            // не вдаваясь в логику
             random.Next(9,20),
             random.Next(0,60),
             0

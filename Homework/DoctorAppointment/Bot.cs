@@ -1,11 +1,14 @@
 using System;
 using System.Globalization;
 
+// Может быть статик
+
 public class Bot
 {
 
     public void RequestSurname()
     {
+        // Избыточный $
         Console.WriteLine($"Здравствуйте! Введите вашу фамилию.\n");
     }
     
@@ -17,6 +20,7 @@ public class Bot
     {
         Console.WriteLine("Введите дату приема в формате: год (ГГГГ), месяц (ММ), день (ДД). Нажимайте ENTER после ввода каждой секции даты.\n");
     }
+    // код конвеншены!!! Лишние пустые линии. Нет пустой строки в конце каждого файла (гугл поиск конфигур иде то эд блэнк лайн эт зе энд оф файл)
     
     
     public void PrintFinalMessage()
