@@ -10,8 +10,9 @@ namespace CurrencyConvertor
             // Лучше создать файлик Endpoints.cs и там хранить все эндпоинты
             // public const ServiceUrl = "https://www.nbrb.by",
             //public const ApiPrefix = '/api'
-            // public const RubRate = "{BASE_YRL}{ApiPrefix}/exrates/rates/431",
-            string[] endpoints = new string[]
+            // public const RubRate = "{BASE_YRL}{ApiPrefix}/exrates/rates/431", : к сожалению, на данный момент, мне не
+            // хватить знаний доработать эту функциональность, но я обязательно изучу вопрос глубже
+            var endpoints = new[]
             {
                 "https://www.nbrb.by/api/exrates/rates/431",
                 "https://www.nbrb.by/api/exrates/rates/451", 
@@ -36,13 +37,13 @@ namespace CurrencyConvertor
                     switch (i)
                     {
                         case 0:
-                            Currencies.UsdRate = rate;
+                            Currency.UsdValue = rate;
                             break;
                         case 1:
-                            Currencies.EurRate = rate;
+                            Currency.EurValue = rate;
                             break;
                         case 2:
-                            Currencies.RubRate = rate;
+                            Currency.RubValue = rate;
                             break;
                         
                     }

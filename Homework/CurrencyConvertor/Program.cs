@@ -2,86 +2,36 @@
 
 namespace CurrencyConvertor
 {
-    // модификатор 
-    class Program
+    // модификатор : solved
+    public class Program
     {
         public static void Main(string[] args)
         {
             CurrencyApi.CurrencyCheck();
             
-            Currencies.RequestAmount();
-            var (userCurrency, pureAmount) = Currencies.TakeAmount();
+            Convertor.RequestAmount();
+            var (userCurrency, userAmount) = Convertor.TakeAmount();
        
-            Currencies.RequestExchangeCurrency();
-            var exchangeCurrency = Currencies.TakeExchangeCurrency();
+            Convertor.RequestExchangeCurrency();
+            var exchangeCurrency = Convertor.TakeExchangeCurrency();
 
             switch (userCurrency)
             {
-                // В константы пж USD EUR etc
-                case "USD":
+                // В константы пж USD EUR etc : solved, добавил константы в класс Currency
+                case (Currency.UsdType): 
                     switch (exchangeCurrency)
                     {
-                        // дублирование в кейсах
-                        case "EUR":
+                        // дублирование в кейсах : solved, добавил методы в классе Convertor
+                        case (Currency.EurType):
                         {
-                            var result = ((pureAmount * Currencies.UsdRate) / Currencies.EurRate);
-                            result -= result * 0.03M;
-                            Console.WriteLine($"Результат: {result:0.00} EUR");
+                            var result = Convertor.ConvertUsdToEur(userAmount);
+                            Console.WriteLine(result + "EUR");
                             break;
                         }
-                        case "RUB":
+                        case (Currency.RubType):
                         {
-                            var result = (((pureAmount * Currencies.UsdRate) * 100) / Currencies.RubRate);
-                            result -= result * 0.03M;
-                            Console.WriteLine($"Результат: {result:0.00} RUB");
-                            break;
-                        }
-                        default:
-                            Console.WriteLine("Неверное значение валюты.");
-                            break;
-                    }
-
-                    break;
-                case "EUR":
-                    switch (exchangeCurrency)
-                    {
-                        case "RUB":
-                        {
-                            // лишние скобки в выражении 
-                            var result = (((pureAmount * Currencies.EurRate) * 100) / Currencies.RubRate);
-                            // 0.3М тоже непонятно что это 
-                            result -= result * 0.03M;
-                            Console.WriteLine($"Результат: {result:0.00} RUB");
-                            break;
-                        }
-                        case "USD":
-                        {
-                            var result = ((pureAmount * Currencies.EurRate) / Currencies.UsdRate);
-                            result -= result * 0.03M;
-                            Console.WriteLine($"Результат: {result:0.00} USD");
-                            break;
-                        }
-                        default:
-                            Console.WriteLine("Неверное значение валюты.");
-                            break;
-                    }
-
-                    break;
-                case "RUB":
-                    switch (exchangeCurrency)
-                    {
-                        case "USD":
-                        {
-                            var result = (((pureAmount / 100) * Currencies.RubRate) / Currencies.UsdRate);
-                            result -= result * 0.03M;
-                            Console.WriteLine($"Результат: {result:0.00} USD");
-                            break;
-                        }
-                        case "EUR":
-                        {
-                            var result = (((pureAmount / 100) * Currencies.RubRate)  / Currencies.EurRate);
-                            result -= result * 0.03M;
-                            Console.WriteLine($"Результат: {result:0.00} EUR");
+                            var result = Convertor.ConvertUsdToRub(userAmount);
+                            Console.WriteLine(result + "RUB");
                             break;
                         }
                         default:
@@ -89,7 +39,48 @@ namespace CurrencyConvertor
                             break;
                     }
                     break;
-
+                case (Currency.EurType): 
+                    switch (exchangeCurrency)
+                    {
+                        case (Currency.RubType):
+                        {
+                            // лишние скобки в выражении : solved 
+                            var result = Convertor.ConvertEurToRub(userAmount);
+                            // 0.3М тоже непонятно что это : solved, добавил в класс  Сonvertor костанту
+                            Console.WriteLine(result + "RUB");
+                            break;
+                        }
+                        case (Currency.UsdType):
+                        {
+                            var result = Convertor.ConvertEurToUsd(userAmount);
+                            Console.WriteLine(result + "USD");
+                            break;
+                        }
+                        default:
+                            Console.WriteLine("Неверное значение валюты.");
+                            break;
+                    }
+                    break;
+                case nameof(Currency.RubType) :
+                    switch (exchangeCurrency)
+                    {
+                        case (Currency.UsdType):
+                        {
+                            var result = Convertor.ConvertRubToUsd(userAmount);
+                            Console.WriteLine(result + "USD");
+                            break;
+                        }
+                        case (Currency.EurType):
+                        {
+                            var result = Convertor.ConvertRubToEur(userAmount);
+                            Console.WriteLine(result + "EUR");
+                            break;
+                        }
+                        default:
+                            Console.WriteLine("Неверное значение валюты.");
+                            break;
+                    }
+                    break;
             }
         }
     }
