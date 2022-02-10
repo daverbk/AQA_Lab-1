@@ -1,21 +1,20 @@
 ﻿using System;
 
-// модификатор
-class Program
+// модификатор : solved
+namespace DoctorAppointment
 {
-    public static void Main(string[] args)
+    public class Program
     {
-        var bot = new Bot();
+        public static void Main(string[] args)
+        {
+            Bot.RequestSurname();
+            User.Surname = Console.ReadLine();
             
-        bot.RequestSurname();
-        User.Surname = Console.ReadLine();
+            Bot.RequestName();
+            User.Name = Console.ReadLine();
             
-        bot.RequestName();
-        User.Name = Console.ReadLine();
-            
-        bot.RequestDate();
-            
-        bot.PrintFinalMessage();
-
+            Bot.RequestDate();
+            Bot.PrintFinalMessage();
+        }
     }
 }

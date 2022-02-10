@@ -1,81 +1,75 @@
 using System;
 using System.Linq;
 
-// Неймспейсы проверь 
-public class User
+// Неймспейсы проверь : solved 
+namespace DoctorAppointment
 {
-    // Почему они налабл? 
-    private static string? _userName;
-    private static string? _userSurame;
-    
-    public static string? Name
+    public static class User
     {
-        get => _userName;
-
-        set
+        // Почему они налабл? : solved, были налабл, ибо во время разработки добавил ? для тествых запусков, позже,
+        // когда добавил проверку в сеттере, забыл убрать. 
+        private static string s_userName;
+        private static string s_userSurname;
+        
+        public static string Name
         {
-            while (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || char.IsLower(value[0]) || value.Any(char.IsDigit))
+            get => s_userName;
+
+            set
             {
-                Console.WriteLine("Введите имя с большой буквы. Имя не может состоять из цифр.");
-                value = Console.ReadLine();
+                InputValidation(value);
+                s_userName = value;
             }
-            
-            _userName = value;
-
         }
-    }
-
-    public static string? Surname 
-    {
-        // Лучше через стрелочную 
-        get
+        public static string Surname
         {
-            return _userSurame;
-        }
+            // Лучше через стрелочную : solved 
+            get => s_userSurname;
 
-        set
-        {
-            // опять дублирование 
-            while (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) ||  char.IsLower(value[0]) || value.Any(char.IsDigit))
+            set
             {
-                Console.WriteLine("Введите фамилию с большой буквы. Имя не может состоять из цифр.");
-                value = Console.ReadLine();
+                // опять дублирование : solved
+                InputValidation(value);
+                s_userSurname = value;
             }
-
-            _userSurame = value;
-
         }
-    }
-    
-    public static DateTime SetVisitDate()
-    {
-        var random = new Random();
-        // Assume the doctor's working hours are 9am-8pm.
-        var date = new DateTime(
-            Convert.ToInt32(Console.ReadLine()), 
-            Convert.ToInt32(Console.ReadLine()), 
-            Convert.ToInt32(Console.ReadLine()),
-            // Константы для чисел. Код должен читаться легко и любой человек должен понимать что в нем происходит,
-            // не вдаваясь в логику
-            random.Next(9,20),
-            random.Next(0,60),
-            0
-        );
 
-        while (date < DateTime.Now )
+        private static string InputValidation(string userInput)
         {
-            Console.WriteLine("Вы ввели дату из прошлого, повторите ввод даты.");
-            date = new DateTime(
+            while (string.IsNullOrEmpty(userInput) || string.IsNullOrWhiteSpace(userInput) ||
+                   char.IsLower(userInput[0]) || userInput.Any(char.IsDigit))
+            {
+                Console.WriteLine("Произведите ввод с большой буквы. Ввод не может содержать цифры.");
+                userInput = Console.ReadLine();
+            }
+            return userInput;
+        }
+        public static DateTime SetVisitDate()
+        {
+            var random = new Random();
+            var date = new DateTime(
                 Convert.ToInt32(Console.ReadLine()), 
                 Convert.ToInt32(Console.ReadLine()), 
                 Convert.ToInt32(Console.ReadLine()),
-                random.Next(9,20),
-                random.Next(0,60),
+                // Константы для чисел. Код должен читаться легко и любой человек должен понимать что в нем происходит,
+                // не вдаваясь в логику : solved 
+                random.Next(Bot.OpeningHours,Bot.ClosingHours),
+                random.Next(Bot.MinutesLowerBoundary,Bot.MinutesUpperBoundary),
                 0
             );
+            while (date < DateTime.Now )
+            {
+                Console.WriteLine("Вы ввели дату из прошлого, повторите ввод даты.");
+                date = new DateTime(
+                    Convert.ToInt32(Console.ReadLine()), 
+                    Convert.ToInt32(Console.ReadLine()), 
+                    Convert.ToInt32(Console.ReadLine()),
+                    random.Next(Bot.OpeningHours,Bot.ClosingHours),
+                    random.Next(Bot.MinutesLowerBoundary,Bot.MinutesUpperBoundary),
+                    0
+                );
+            }
+            return date;
         }
-        
-        return date;
     }
-
 }
