@@ -14,6 +14,7 @@ namespace DoctorAppointment
             User.Name = Console.ReadLine();
             
             Bot.RequestDate();
+            
             Bot.PrintFinalMessage();
         }
     }

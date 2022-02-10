@@ -44,6 +44,7 @@ namespace DoctorAppointment
             }
             return userInput;
         }
+        
         public static DateTime SetVisitDate()
         {
             var random = new Random();
