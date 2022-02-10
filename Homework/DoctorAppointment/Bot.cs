@@ -6,15 +6,15 @@ namespace DoctorAppointment
 {
     public static class Bot
     {
-        private const int s_openingHours = 9;
-        private const int s_closingHours = 20;
-        private const int s_minutesLowerBoundary = 0;
-        private const int s_minutesUpperBoundary = 60;
+        private const int _openingHours = 9;
+        private const int _closingHours = 20;
+        private const int _minutesLowerBoundary = 0;
+        private const int _minutesUpperBoundary = 60;
         
-        public static int MinutesLowerBoundary => s_minutesLowerBoundary;
-        public static int MinutesUpperBoundary => s_minutesUpperBoundary;
-        public static int OpeningHours => s_openingHours;
-        public static int ClosingHours => s_closingHours;
+        public static int MinutesLowerBoundary => _minutesLowerBoundary;
+        public static int MinutesUpperBoundary => _minutesUpperBoundary;
+        public static int OpeningHours => _openingHours;
+        public static int ClosingHours => _closingHours;
         
         public static void RequestSurname()
         {

@@ -8,29 +8,29 @@ namespace DoctorAppointment
     {
         // Почему они налабл? : solved, были налабл, ибо во время разработки добавил ? для тествых запусков, позже,
         // когда добавил проверку в сеттере, забыл убрать. 
-        private static string s_userName;
-        private static string s_userSurname;
+        private static string _userName;
+        private static string _userSurname;
         
         public static string Name
         {
-            get => s_userName;
+            get => _userName;
 
             set
             {
                 InputValidation(value);
-                s_userName = value;
+                _userName = value;
             }
         }
         public static string Surname
         {
             // Лучше через стрелочную : solved 
-            get => s_userSurname;
+            get => _userSurname;
 
             set
             {
                 // опять дублирование : solved
                 InputValidation(value);
-                s_userSurname = value;
+                _userSurname = value;
             }
         }
 
