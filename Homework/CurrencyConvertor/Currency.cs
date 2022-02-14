@@ -1,13 +1,8 @@
 namespace CurrencyConvertor
 {
-    public static class Currency
+    public class Currency
     {
-        public const string UsdType = "USD";
-        public const string EurType = "EUR";
-        public const string RubType = "RUB";
-        
-        public static decimal UsdValue { get; set; }
-        public static decimal EurValue { get; set; }
-        public static decimal RubValue { get; set; }
+        public string Type { get; set; }
+        public decimal Value { get; init; }
     }
 }

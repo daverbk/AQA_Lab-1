@@ -9,12 +9,12 @@ namespace DoctorAppointment
         {
             Bot.RequestSurname();
             User.Surname = Console.ReadLine();
-            
+
             Bot.RequestName();
             User.Name = Console.ReadLine();
-            
+
             Bot.RequestDate();
-            
+
             Bot.PrintFinalMessage();
         }
     }
