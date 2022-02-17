@@ -5,7 +5,9 @@ namespace Users
     public class Candidate : Person, IJob
     {
         public string JobTitle { get; set; }
+        
         public string JobDescription { get; set; }
+        
         public decimal JobSalary { get; set; }
         
         public void SelfPresentation()
