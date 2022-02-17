@@ -7,6 +7,5 @@ namespace Users
         public string Name { get; set; }
         public string SecondName { get; set; }
         public Guid Id { get; set; }
-        
     }
 }
