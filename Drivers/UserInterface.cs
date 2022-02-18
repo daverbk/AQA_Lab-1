@@ -6,6 +6,18 @@ namespace Drivers
 {
     public class UserInterface
     {
+        private enum VehicleTypes
+        {
+            Minivan,
+            Truck,
+            SportCar
+        };
+        
+        private const int AverageConsumptionMultiplier = 5;
+        private const string MinivanClassName = "Drivers.Minivan";
+        private const string TruckClassName = "Drivers.Truck";
+        private const string SportCarClassName = "Drivers.SportCar";
+
         public void Start(List<Driver> drivers, List<Vehicle> vehicles)
         {
             RunMainMenu(drivers, vehicles);
@@ -38,10 +50,10 @@ Welcome to Drivers! Use arrow keys to cycle through the options and press enter 
             switch (selectedIndex)
             {
                 case 0:
-                    RunTechSpecsMenu(vehicle, drivers, vehicles, selectedDriverIndex);
+                    RunThirdMenu(vehicle, drivers, vehicles, selectedDriverIndex, selectedIndex);
                     break;
                 case 1:
-                    RunPerformanceChars(vehicle, drivers, vehicles, selectedDriverIndex);
+                    RunThirdMenu(vehicle, drivers, vehicles, selectedDriverIndex, selectedIndex);
                     break;
                 case 2:
                     RunMainMenu(drivers, vehicles);
@@ -49,52 +61,40 @@ Welcome to Drivers! Use arrow keys to cycle through the options and press enter 
             }
         }
 
-        private void RunTechSpecsMenu(Vehicle vehicle, List<Driver> drivers, List<Vehicle> vehicles,
-            int selectedDriverIndex)
+        private void RunThirdMenu(Vehicle vehicle, List<Driver> drivers, List<Vehicle> vehicles,
+            int selectedDriverIndex, int secondMenuSelectedIndex)
         {
-            var carStats = CreateCarStats(vehicles, drivers, selectedDriverIndex);
+            var prompt = "";
+            switch (secondMenuSelectedIndex)
+            {
+                case 0:
+                    var carStats = CreateCarStats(vehicles, drivers, selectedDriverIndex);
+                    prompt = $"Choose 'return' to return to the previous menu.\n{carStats}";
+                    break;
+                case 1:
+                    var calculatedResult = CalculateFuelTimeConsumption(vehicle);
+                    prompt = $"Choose 'return' to return to the previous menu.\n{calculatedResult}";
+                    break;
+            }
 
-            var prompt = $"Choose 'return' to return to the previous menu.\n{carStats}";
             string[] options = {"Return"};
-
             var returnMenu = new Menu(prompt, options);
             var selectedIndex = returnMenu.Run(options);
+
             if (selectedIndex == 0)
             {
                 RunSecondMenu(vehicle, drivers, vehicles, selectedDriverIndex);
             }
         }
-
-        private void RunPerformanceChars(Vehicle vehicle, List<Driver> drivers, List<Vehicle> vehicles,
-            int selectedDriverIndex)
-        {
-            var calculatedResult = CalculateFuelTimeConsumption(vehicle);
-
-            var prompt = $"Choose 'return' to return to the previous menu.\n{calculatedResult}";
-            string[] options = {"Return"};
-
-            var returnMenu = new Menu(prompt, options);
-            var selectedIndex = returnMenu.Run(options);
-            if (selectedIndex == 0)
-            {
-                RunSecondMenu(vehicle, drivers, vehicles, selectedDriverIndex);
-            }
-        }
-
-        private const int AverageConsumptionMultiplier = 5;
-        private const string MinivanClassName = "Drivers.Minivan";
-        private const string TruckClassName = "Drivers.Truck";
-        private const string SportCarClassName = "Drivers.SportCar";
 
         private string CreateCarStats(List<Vehicle> vehicles, List<Driver> drivers, int selectedDriverIndex)
         {
             var driverCars = vehicles.Where(vehicle => vehicle.Owner.Id == drivers[selectedDriverIndex].Id).ToList();
             var vehicleStats = "";
-            //var carType = GetVehiclType()
 
             foreach (var car in driverCars)
             {
-                vehicleStats += ($"Type: {GetVehiclType(car)}\n" + $"Model: {car.Model}\n" +
+                vehicleStats += ($"Type: {GetVehicleType(car)}\n" + $"Model: {car.Model}\n" +
                                  $"Year of manufacture: {car.Year}\n" +
                                  $"Engine capacity: {Math.Round(car.Engine.Capacity, 1)}\n" +
                                  $"Fuel consumption: {(int) car.Engine.Capacity * AverageConsumptionMultiplier}L/100km\n" +
@@ -104,15 +104,14 @@ Welcome to Drivers! Use arrow keys to cycle through the options and press enter 
             return vehicleStats;
         }
 
-        private string GetVehiclType(Vehicle vehicle)
+        private string GetVehicleType(Vehicle vehicle)
         {
-            var type = "";
             return vehicle.GetType().ToString() switch
             {
-                MinivanClassName => "Minivan",
-                SportCarClassName => "Sport Car",
-                TruckClassName => "Truck",
-                _ => type
+                MinivanClassName => VehicleTypes.Minivan.ToString(),
+                SportCarClassName => VehicleTypes.SportCar.ToString(),
+                TruckClassName => VehicleTypes.Truck.ToString(),
+                _ => ""
             };
         }
 

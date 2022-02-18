@@ -2,6 +2,6 @@ namespace Drivers
 {
     public class Truck : Vehicle
     {
-        public bool IsPricep { get; set; }
+        public bool WithTrailer { get; set; }
     }
 }

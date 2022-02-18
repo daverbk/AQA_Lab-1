@@ -13,7 +13,7 @@ namespace Drivers
             {
                 while (value < DateOfBirth || value.Year - DateOfBirth.Year < 16)
                 {
-                    value = BogusObjectFiller.FillDriver().DateGotDrivingLicense;
+                    value = BogusDriversFiller.FillDriver(1)[0].DateGotDrivingLicense;
                 }
 
                 _dateGotDrivingLicense = value;

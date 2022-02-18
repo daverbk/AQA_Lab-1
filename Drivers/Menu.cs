@@ -14,18 +14,16 @@ namespace Drivers
         {
             _prompt = prompt;
             _options = options;
-            _selectedIndex = 0;
         }
 
-        // Constructor for custom menus.
+        // DEVNOTE: Constructor for custom menus.
         public Menu(string prompt, string[] options)
         {
             _prompt = prompt;
             _hardcodedOptions = options;
-            _selectedIndex = 0;
         }
 
-        // Method for the main menu.
+        // DEVNOTE: Method for the main menu.
         private void DisplayOptions(List<Driver> drivers)
         {
             Console.WriteLine(_prompt);
@@ -56,21 +54,21 @@ namespace Drivers
             Console.ResetColor();
         }
 
-        // Method for custom menus.
-        private void DisplayOptions(string[] options)
+        // DEVNOTE: Method for custom menus.
+        private void DisplayOptions(string[] options) // Метод, который выводит в консоль все опции меню.
         {
-            Console.WriteLine(_prompt);
-            for (var i = 0; i < _hardcodedOptions.Length; i++)
-            {
-                var currentOption = _hardcodedOptions[i];
-                string prefix;
+            Console.WriteLine(_prompt); // Выводим заглавие.
+            for (var i = 0; i < _hardcodedOptions.Length; i++) // С помощью этого цикла выводим все опции, которые 
+            {                                                  // пользователь сможет кликать.
+                var currentOption = _hardcodedOptions[i]; 
+                string prefix; 
 
-                if (i == _selectedIndex)
-                {
+                if (i == _selectedIndex)                       // Задача этого if - визуально обозначить на какой опции  
+                {                                              // находится юзер.
                     prefix = "=> ";
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.BackgroundColor = ConsoleColor.White;
-                }
+                    Console.ForegroundColor = ConsoleColor.Black;  // Так, если индекс цикла будет равен индексу,  
+                    Console.BackgroundColor = ConsoleColor.White;  // на котором находиться пользователь, то перед 
+                }                                                  // опцией будет =>. 
                 else
                 {
                     prefix = " ";
@@ -78,46 +76,46 @@ namespace Drivers
                     Console.BackgroundColor = ConsoleColor.Black;
                 }
 
-                Console.WriteLine($"{prefix}<<{currentOption}>>\n");
-            }
+                Console.WriteLine($"{prefix}<<{currentOption}>>\n"); // Сам вывод опций(пунктов) меню с обозначением  
+            }                                                        // на какой опции находится пользователь.
 
             Console.ResetColor();
         }
 
-        // Method for the main menu.
+        // DEVNOTE: Method for the main menu.
         public int Run(List<Driver> vehicles)
         {
             ConsoleKey keyPressed;
-            do
+            do // Цикл, который будет сопровождать логику переключения по опциям меню.
             {
-                Console.Clear();
-                DisplayOptions(vehicles);
+                Console.Clear(); // Очищаем консоль.
+                DisplayOptions(vehicles); // Выводим опции меню с указателем на выбранный пункт.
 
-                var keyInfo = Console.ReadKey(true);
-                keyPressed = keyInfo.Key;
-
-                if (keyPressed == ConsoleKey.UpArrow)
+                var keyInfo = Console.ReadKey(true); // Юзер может нажимать любые клавиши, но т.к. в параметры
+                keyPressed = keyInfo.Key;                    // метода ReadKey мы передаем true-они не будут выводиться
+                                                             // в консоль, без этого параметра, все нажатые клавиши
+                if (keyPressed == ConsoleKey.UpArrow)        // выводились бы в консоль.
                 {
                     _selectedIndex--;
-                    if (_selectedIndex == -1)
-                    {
+                    if (_selectedIndex == -1)                // Логика if и else if заключается в переключении между 
+                    {                                        // между опциями.
                         _selectedIndex = _options.Count - 1;
-                    }
-                }
-                else if (keyPressed == ConsoleKey.DownArrow)
-                {
+                    }                                        //  _selectedIndex не имеет никакого отношения к самому 
+                }                                            // массиву или списку опций, т.к. само по себе это поле 
+                else if (keyPressed == ConsoleKey.DownArrow) // класса Menu, оно нужно лишь для визуального обозначения 
+                {                                            // опции на которой находиться пользователь.
                     _selectedIndex++;
-                    if (_selectedIndex == _options.Count)
-                    {
-                        _selectedIndex = 0;
-                    }
-                }
-            } while (keyPressed != ConsoleKey.Enter);
-
-            return _selectedIndex;
-        }
-
-        // Method for custom menus.
+                    if (_selectedIndex == _options.Count)    // Из-за того, что _selectedIndex не связан с индексом 
+                    {                                        // массива или списка опций, следует, что, если юзер 
+                        _selectedIndex = 0;                  // наикрементит или надерементит, выходя за рамки массива
+                    }                                        // или списка опций, исключение "Index out of bounds" 
+                }                                            // не будет выкинуто. Но для того, чтобы "перепрыгивать", 
+            } while (keyPressed != ConsoleKey.Enter);        // например, с крайнего верхнего пункта меню в крайнее  
+                                                             // нижнее, если юзер нажимает стрелку "вверх",  
+            return _selectedIndex;                           // используется вложенный if. Метод возращает индекс,
+        }                                                    // на котором юзер нажал клавишу "Enter". С помощью 
+                                                             // этого индекса в дальнейшем вызывается следующее,   
+        // DEVNOTE: Method for custom menus.                 // выбранное пользователем меню.
         public int Run(string[] options)
         {
             ConsoleKey keyPressed;
@@ -156,9 +154,7 @@ namespace Drivers
             var driverInfo = FormatDriverInfo(drivers[index]);
             return driverInfo;
         }
-
-        // As MM/dd/yyyy is not a string here, I didn't make it const.
-        // I hope, it's not a mistake.
+        
         private string FormatDriverInfo(Driver driver)
         {
             var formattedInfo = $"Name: {driver.FirstName + " " + driver.LastName}\n" +

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Drivers
@@ -8,33 +7,30 @@ namespace Drivers
     {
         static void Main(string[] args)
         {
-            var drivers = new List<Driver>();
-            var engines = new List<Engine>();
-            var vehicles = new List<Vehicle>();
+            const int countOfDrivers = 3;
+            const int countOfEngines = 4;
             var random = new Random();
 
-            var countOfDrivers = 3;
-            // Generating some count of drivers.
-            for (var i = 0; i < countOfDrivers; i++)
-            {
-                drivers.Add(BogusObjectFiller.FillDriver());
-                engines.Add(BogusObjectFiller.FillEngine());
-            }
+            // DEVNOTE: Generating some count of drivers.
+            var drivers = BogusDriversFiller.FillDriver(countOfDrivers);
+            var engines = BogusEnginesFiller.FillEngine(countOfEngines);
+            var vehicles = new List<Vehicle>();
 
-            // Generating some amount of vehicles of different type to provide the logic
+            // DEVNOTE: Generating some amount of vehicles of different type to provide the logic
             // of one driver having N count of cars. And I've decided to provide the logic 
             // that cars might have same engines.
-            for (var i = 0; i < countOfDrivers * 2; i++)
+            for (var i = 0; i < countOfDrivers ; i++)
             {
-                vehicles.Add(BogusObjectFiller.FillMinivan(drivers[random.Next(countOfDrivers)],
-                    engines[random.Next(countOfDrivers)]));
-                vehicles.Add(BogusObjectFiller.FillTruck(drivers[random.Next(countOfDrivers)],
-                    engines[random.Next(countOfDrivers)]));
+                vehicles.Add(BogusVehiclesFiller.FillMinivan(drivers[random.Next(countOfDrivers)],
+                    engines[random.Next(countOfEngines)]));
+                vehicles.Add(BogusVehiclesFiller.FillTruck(drivers[random.Next(countOfDrivers)],
+                    engines[random.Next(countOfEngines)]));
+                
                 var indexForSportCar = random.Next(countOfDrivers);
-                if (BogusObjectFiller.CheckIfEnoughDrivingExp(drivers[indexForSportCar]))
+                if (BogusDriversFiller.CheckIfEnoughDrivingExp(drivers[indexForSportCar]))
                 {
-                    vehicles.Add(BogusObjectFiller.FillSportCar(drivers[indexForSportCar],
-                        engines[random.Next(countOfDrivers)]));
+                    vehicles.Add(BogusVehiclesFiller.FillSportCar(drivers[indexForSportCar],
+                        engines[random.Next(countOfEngines)]));
                 }
             }
 
