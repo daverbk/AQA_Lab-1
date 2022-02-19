@@ -6,13 +6,6 @@ namespace Drivers
 {
     public class UserInterface
     {
-        private enum VehicleTypes
-        {
-            Minivan,
-            Truck,
-            SportCar
-        };
-        
         private const int AverageConsumptionMultiplier = 5;
         private const string MinivanClassName = "Drivers.Minivan";
         private const string TruckClassName = "Drivers.Truck";

@@ -4,12 +4,13 @@ using Bogus;
 
 namespace Drivers
 {
-    public static class BogusDriversFiller
+    public static class DriverGenerator
     {
         // DEVNOTE: Let's assume driving license must be reissued every 10 years.
         private const int YearsToGoBack = 10;
+        private const int YearsOfExperienceForSportCar = 5;
 
-        public static List<Driver> FillDriver(int count)
+        public static List<Driver> GenerateDrivers(int count)
         {
             var driverFaker = new Faker<Driver>()
                 .RuleFor(x => x.FirstName, x => x.Person.FirstName)
@@ -20,9 +21,17 @@ namespace Drivers
             return driverFaker.Generate(count);
         }
 
-        public static bool CheckIfEnoughDrivingExp(Driver driver)
+        public static Driver GenerateDriverNewDateOfBirth()
         {
-            if (DateTime.Now.Year - driver.DateGotDrivingLicense.Year < 5)
+            var driverDateOfBirthFaker = new Faker<Driver>()
+                .RuleFor(x => x.DateOfBirth, x => x.Person.DateOfBirth);
+
+            return driverDateOfBirthFaker.Generate();
+        }
+        
+        public static bool CheckIfEnoughDrivingExperience(Driver driver)
+        {
+            if (DateTime.Now.Year - driver.DateGotDrivingLicense.Year < YearsOfExperienceForSportCar)
             {
                 return false;
             }

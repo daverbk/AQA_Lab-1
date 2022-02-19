@@ -55,20 +55,20 @@ namespace Drivers
         }
 
         // DEVNOTE: Method for custom menus.
-        private void DisplayOptions(string[] options) // Метод, который выводит в консоль все опции меню.
+        private void DisplayOptions(string[] options) 
         {
-            Console.WriteLine(_prompt); // Выводим заглавие.
-            for (var i = 0; i < _hardcodedOptions.Length; i++) // С помощью этого цикла выводим все опции, которые 
-            {                                                  // пользователь сможет кликать.
+            Console.WriteLine(_prompt); 
+            for (var i = 0; i < _hardcodedOptions.Length; i++)  
+            {                                                  
                 var currentOption = _hardcodedOptions[i]; 
                 string prefix; 
 
-                if (i == _selectedIndex)                       // Задача этого if - визуально обозначить на какой опции  
-                {                                              // находится юзер.
+                if (i == _selectedIndex)                         
+                {                                              
                     prefix = "=> ";
-                    Console.ForegroundColor = ConsoleColor.Black;  // Так, если индекс цикла будет равен индексу,  
-                    Console.BackgroundColor = ConsoleColor.White;  // на котором находиться пользователь, то перед 
-                }                                                  // опцией будет =>. 
+                    Console.ForegroundColor = ConsoleColor.Black;    
+                    Console.BackgroundColor = ConsoleColor.White;   
+                }                                                   
                 else
                 {
                     prefix = " ";
@@ -76,8 +76,8 @@ namespace Drivers
                     Console.BackgroundColor = ConsoleColor.Black;
                 }
 
-                Console.WriteLine($"{prefix}<<{currentOption}>>\n"); // Сам вывод опций(пунктов) меню с обозначением  
-            }                                                        // на какой опции находится пользователь.
+                Console.WriteLine($"{prefix}<<{currentOption}>>\n");   
+            }                                                        
 
             Console.ResetColor();
         }
@@ -86,36 +86,43 @@ namespace Drivers
         public int Run(List<Driver> vehicles)
         {
             ConsoleKey keyPressed;
-            do // Цикл, который будет сопровождать логику переключения по опциям меню.
+            do 
             {
-                Console.Clear(); // Очищаем консоль.
-                DisplayOptions(vehicles); // Выводим опции меню с указателем на выбранный пункт.
+                Console.Clear(); 
+                DisplayOptions(vehicles); 
 
-                var keyInfo = Console.ReadKey(true); // Юзер может нажимать любые клавиши, но т.к. в параметры
-                keyPressed = keyInfo.Key;                    // метода ReadKey мы передаем true-они не будут выводиться
-                                                             // в консоль, без этого параметра, все нажатые клавиши
-                if (keyPressed == ConsoleKey.UpArrow)        // выводились бы в консоль.
+                var keyInfo = Console.ReadKey(true); 
+                keyPressed = keyInfo.Key;                    
+                                                             
+                switch (keyPressed)
                 {
-                    _selectedIndex--;
-                    if (_selectedIndex == -1)                // Логика if и else if заключается в переключении между 
-                    {                                        // между опциями.
-                        _selectedIndex = _options.Count - 1;
-                    }                                        //  _selectedIndex не имеет никакого отношения к самому 
-                }                                            // массиву или списку опций, т.к. само по себе это поле 
-                else if (keyPressed == ConsoleKey.DownArrow) // класса Menu, оно нужно лишь для визуального обозначения 
-                {                                            // опции на которой находиться пользователь.
-                    _selectedIndex++;
-                    if (_selectedIndex == _options.Count)    // Из-за того, что _selectedIndex не связан с индексом 
-                    {                                        // массива или списка опций, следует, что, если юзер 
-                        _selectedIndex = 0;                  // наикрементит или надерементит, выходя за рамки массива
-                    }                                        // или списка опций, исключение "Index out of bounds" 
-                }                                            // не будет выкинуто. Но для того, чтобы "перепрыгивать", 
-            } while (keyPressed != ConsoleKey.Enter);        // например, с крайнего верхнего пункта меню в крайнее  
-                                                             // нижнее, если юзер нажимает стрелку "вверх",  
-            return _selectedIndex;                           // используется вложенный if. Метод возращает индекс,
-        }                                                    // на котором юзер нажал клавишу "Enter". С помощью 
-                                                             // этого индекса в дальнейшем вызывается следующее,   
-        // DEVNOTE: Method for custom menus.                 // выбранное пользователем меню.
+                    case ConsoleKey.UpArrow:
+                    {
+                        _selectedIndex--;
+                        if (_selectedIndex == -1)                 
+                        {                                        
+                            _selectedIndex = _options.Count - 1;
+                        }
+
+                        break;
+                    }
+                    case ConsoleKey.DownArrow:
+                    {
+                        _selectedIndex++;
+                        if (_selectedIndex == _options.Count)     
+                        {                                         
+                            _selectedIndex = 0;                  
+                        }
+
+                        break;
+                    }
+                }                                             
+            } while (keyPressed != ConsoleKey.Enter);          
+                                                               
+            return _selectedIndex;                           
+        }                                                     
+                                                                
+        // DEVNOTE: Method for custom menus.                 
         public int Run(string[] options)
         {
             ConsoleKey keyPressed;
@@ -127,20 +134,27 @@ namespace Drivers
                 var keyInfo = Console.ReadKey(true);
                 keyPressed = keyInfo.Key;
 
-                if (keyPressed == ConsoleKey.UpArrow)
+                switch (keyPressed)
                 {
-                    _selectedIndex--;
-                    if (_selectedIndex == -1)
+                    case ConsoleKey.UpArrow:
                     {
-                        _selectedIndex = _hardcodedOptions.Length - 1;
+                        _selectedIndex--;
+                        if (_selectedIndex == -1)
+                        {
+                            _selectedIndex = _hardcodedOptions.Length - 1;
+                        }
+
+                        break;
                     }
-                }
-                else if (keyPressed == ConsoleKey.DownArrow)
-                {
-                    _selectedIndex++;
-                    if (_selectedIndex == _hardcodedOptions.Length)
+                    case ConsoleKey.DownArrow:
                     {
-                        _selectedIndex = 0;
+                        _selectedIndex++;
+                        if (_selectedIndex == _hardcodedOptions.Length)
+                        {
+                            _selectedIndex = 0;
+                        }
+
+                        break;
                     }
                 }
             } while (keyPressed != ConsoleKey.Enter);

@@ -4,6 +4,7 @@ namespace Drivers
 {
     public class Driver : Person
     {
+        private const int AgeAllowedToGetLicense = 16;
         private DateTime _dateGotDrivingLicense;
 
         public DateTime DateGotDrivingLicense
@@ -11,9 +12,9 @@ namespace Drivers
             get => _dateGotDrivingLicense;
             set
             {
-                while (value < DateOfBirth || value.Year - DateOfBirth.Year < 16)
+                while (value < DateOfBirth || value.Year - DateOfBirth.Year < AgeAllowedToGetLicense)
                 {
-                    value = BogusDriversFiller.FillDriver(1)[0].DateGotDrivingLicense;
+                    value = DriverGenerator.GenerateDriverNewDateOfBirth().DateOfBirth;
                 }
 
                 _dateGotDrivingLicense = value;
