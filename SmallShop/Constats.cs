@@ -14,7 +14,7 @@ namespace SmallShop
             public const int CountOfProductsWhenAdding = 1;
             public const int IndexOfProductWhenAdding = 0;
         }
-        
+
         public static class NewUser
         {
             public const int CountOfProductsWhenCreated = 0;
@@ -42,6 +42,11 @@ namespace SmallShop
         public static class TimeToWait
         {
             public const int InMilliseconds = 4000;
+        }
+
+        public static class AgeToBuyAlcohol
+        {
+            public const int Age = 18;
         }
     }
 }

@@ -14,47 +14,56 @@ namespace SmallShop
 
         private void RunMainMenu(List<User> users)
         {
-            while (true) // DEVNOTE: "While" is intended to come back to the main menu using "continue;".
-            {
-                const string prompt = @"
-██████╗ ███████╗████████╗ ██████╗ ██████╗ ███████╗    ███╗   ███╗ █████╗ ███╗   ██╗ █████╗  ██████╗ ███████╗██████╗ 
-██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝    ████╗ ████║██╔══██╗████╗  ██║██╔══██╗██╔════╝ ██╔════╝██╔══██╗
-██████╔╝███████╗   ██║   ██║   ██║██████╔╝█████╗      ██╔████╔██║███████║██╔██╗ ██║███████║██║  ███╗█████╗  ██████╔╝
-██╔══██╗╚════██║   ██║   ██║   ██║██╔══██╗██╔══╝      ██║╚██╔╝██║██╔══██║██║╚██╗██║██╔══██║██║   ██║██╔══╝  ██╔══██╗
-██████╔╝███████║   ██║   ╚██████╔╝██║  ██║███████╗    ██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝███████╗██║  ██║
-╚═════╝ ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
-
+            const string prompt = @"
+██████╗ ███████╗████████╗ ██████╗ ██████╗ ███████╗    ███████╗██╗███╗   ███╗██╗   ██╗██╗      █████╗ ████████╗ ██████╗ ██████╗ 
+██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝    ██╔════╝██║████╗ ████║██║   ██║██║     ██╔══██╗╚══██╔══╝██╔═══██╗██╔══██╗
+██████╔╝███████╗   ██║   ██║   ██║██████╔╝█████╗      ███████╗██║██╔████╔██║██║   ██║██║     ███████║   ██║   ██║   ██║██████╔╝
+██╔══██╗╚════██║   ██║   ██║   ██║██╔══██╗██╔══╝      ╚════██║██║██║╚██╔╝██║██║   ██║██║     ██╔══██║   ██║   ██║   ██║██╔══██╗
+██████╔╝███████║   ██║   ╚██████╔╝██║  ██║███████╗    ███████║██║██║ ╚═╝ ██║╚██████╔╝███████╗██║  ██║   ██║   ╚██████╔╝██║  ██║
+╚═════╝ ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝    ╚══════╝╚═╝╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝
+                                                                                                                               
 Welcome to BStore! Use arrow keys to cycle through the options and press enter to select an option. At any <<User list>> menu you can type 0 to return to the main menu.";
-                var options = new[] {"User list", "Add a user", "Exit"};
-                var mainMenu = new Menu(prompt, options);
-                var selectedIndex = mainMenu.Run(options);
+            var options = new[] {"User list", "Add a user", "Exit"};
+            var mainMenu = new Menu(prompt, options);
+            var selectedIndex = mainMenu.Run(options);
 
-                switch (selectedIndex)
-                {
-                    case Constats.MainMenuOptions.UserListOption:
-                        var chosenUserIndex = ChooseUser(users);
-                        if (chosenUserIndex == Constats.Indexes.ToMainMenuIndex)
-                        {
-                            continue;
-                        }
+            switch (selectedIndex)
+            {
+                case Constats.MainMenuOptions.UserListOption:
+                    RunSecondMenu(users);
+                    break;
+                case Constats.MainMenuOptions.AddUserOption:
+                    AddUserWithEmptyCart(users);
+                    RunMainMenu(users);
+                    break;
+                case Constats.MainMenuOptions.ExitOption:
+                    Exit();
+                    break;
+            }
+        }
 
-                        var chosenProduct = ChooseProduct(users, chosenUserIndex);
-                        if (chosenProduct == Constats.Indexes.ToMainMenuIndex)
-                        {
-                            continue;
-                        }
+        private void RunSecondMenu(List<User> users)
+        {
+            const string prompt = null;
+            var options = new[] {"Let's add some wine", "Let's delete some products"};
+            var secondMenu = new Menu(prompt, options);
+            var selectedIndex = secondMenu.Run(options);
 
-                        users[chosenUserIndex].DeleteProduct(users[chosenUserIndex].ShoppingCart, chosenProduct);
-                        continue;
-                    case Constats.MainMenuOptions.AddUserOption:
-                        AddUserWithEmptyCart(users);
-                        continue;
-                    case Constats.MainMenuOptions.ExitOption:
-                        Exit();
-                        break;
-                }
+            switch (selectedIndex)
+            {
+                case 0:
+                    var chosenUserIndex1 = ChooseUser(users);
+                    users[chosenUserIndex1].TryAddAlcohol(users[chosenUserIndex1].ShoppingCart);
 
-                break;
+                    RunMainMenu(users);
+                    break;
+                case 1:
+                    var chosenUserIndex = ChooseUser(users);
+                    var chosenProduct = ChooseProduct(users, chosenUserIndex);
+                    users[chosenUserIndex].DeleteProduct(users[chosenUserIndex].ShoppingCart, chosenProduct);
+
+                    RunMainMenu(users);
+                    break;
             }
         }
 
@@ -63,6 +72,7 @@ Welcome to BStore! Use arrow keys to cycle through the options and press enter t
             PrintUsers(users);
             Console.Write("Type the index of the user you would like to see the cart of: ");
             var chosenIndex = UserInput.InputChosenIndex(users);
+            ToMainMenu(users, chosenIndex);
             return chosenIndex;
         }
 
@@ -84,6 +94,7 @@ Welcome to BStore! Use arrow keys to cycle through the options and press enter t
             PrintProducts(users, chosenUserIndex);
             Console.Write("Type the index of the product you want to delete: ");
             var chosenIndex = UserInput.InputChosenIndex(users);
+            ToMainMenu(users, chosenIndex);
             return chosenIndex;
         }
 
@@ -93,6 +104,21 @@ Welcome to BStore! Use arrow keys to cycle through the options and press enter t
 
             var index = Constats.Indexes.StartingIndexForPrint;
             var sum = 0M;
+            AddProductToEmptyCart(users, chosenUserIndex);
+
+            foreach (var product in users[chosenUserIndex].ShoppingCart)
+            {
+                Console.WriteLine($"{index}.{product.Category}\n" + $"\t{product.Price}$\n" + $"\t{product.Name}\n" +
+                                  $"\t{product.Barcode}");
+                sum += product.Price;
+                index++;
+            }
+
+            Console.WriteLine($"Grand total: {sum}$");
+        }
+
+        private void AddProductToEmptyCart(List<User> users, int chosenUserIndex)
+        {
             if (users[chosenUserIndex].ShoppingCart.Count == 0)
             {
                 Console.WriteLine("The user's cart is yet empty. If you want to add one press \"Enter\".");
@@ -104,26 +130,15 @@ Welcome to BStore! Use arrow keys to cycle through the options and press enter t
                     users[chosenUserIndex].AddNewProduct(users[chosenUserIndex].ShoppingCart);
                 }
             }
-            else
-            {
-                foreach (var product in users[chosenUserIndex].ShoppingCart)
-                {
-                    Console.WriteLine($"{index}.{product.Category}\n" + $"\t{product.Price}$\n" +
-                                      $"\t{product.Name}\n" + $"\t{product.Barcode}");
-                    sum += product.Price;
-                    index++;
-                }
-
-                Console.WriteLine($"Grand total: {sum}$");
-            }
         }
 
         private void AddUserWithEmptyCart(List<User> currentUsers)
         {
             PrepareConsoleForTyping();
-
             Console.WriteLine(
                 "Alternately insert user's age, first name and passport ID. After each point press \"Enter\".");
+            Console.WriteLine("Passport ID must contain 32 character (upper- and lower-case letters or numbers).");
+            
             var userToAdd = new User()
             {
                 Age = UserInput.InputAge(),
@@ -131,7 +146,7 @@ Welcome to BStore! Use arrow keys to cycle through the options and press enter t
                 PassportId = UserInput.InputPassportId(),
                 ShoppingCart = ProductGenerator.GenerateProducts(Constats.NewUser.CountOfProductsWhenCreated)
             };
-
+            
             var isEqualToAny = currentUsers.Any(u => u.Equals(userToAdd));
             if (isEqualToAny)
             {
@@ -141,6 +156,14 @@ Welcome to BStore! Use arrow keys to cycle through the options and press enter t
             else
             {
                 currentUsers.Add(userToAdd);
+            }
+        }
+
+        private void ToMainMenu(List<User> users, int selectedIndex)
+        {
+            if (selectedIndex == Constats.Indexes.ToMainMenuIndex)
+            {
+                RunMainMenu(users);
             }
         }
 

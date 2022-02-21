@@ -8,7 +8,7 @@ namespace SmallShop
     {
         private const int GuidInputLenght = 32;
         private const int FirstLetterIndex = 0;
-        
+
         public static int InputAge()
         {
             var userAgeInput = Console.ReadLine();
@@ -30,8 +30,7 @@ namespace SmallShop
         {
             var userFirstNameInput = Console.ReadLine();
             while (string.IsNullOrEmpty(userFirstNameInput) || string.IsNullOrWhiteSpace(userFirstNameInput) ||
-                   userFirstNameInput.Any(char.IsDigit) ||
-                   char.IsLower(userFirstNameInput[FirstLetterIndex]))
+                   userFirstNameInput.Any(char.IsDigit) || char.IsLower(userFirstNameInput[FirstLetterIndex]))
             {
                 Console.Clear();
                 Console.WriteLine(

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace SmallShop
 {
@@ -25,9 +26,30 @@ namespace SmallShop
             userProductCart.RemoveAt(selectedProductIndex);
         }
 
-        public bool Equals(User someUser)
+        public void TryAddAlcohol(List<Product> userProductCart)
         {
-            return PassportId.Equals(someUser.PassportId);
+            if (Age <= Constats.AgeToBuyAlcohol.Age)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Too young to drink alcohol.");
+                Thread.Sleep(Constats.TimeToWait.InMilliseconds);
+                Console.ResetColor();
+            }
+            else
+            {
+                userProductCart.Add(new Product {Name = "Alcohol"});
+            }
+        }
+
+        public override bool Equals(object someUser)
+        {
+            if (someUser == null || this.GetType() != someUser.GetType())
+            {
+                return false;
+            }
+
+            var user = (User) someUser;
+            return PassportId.Equals(user.PassportId);
         }
     }
 }

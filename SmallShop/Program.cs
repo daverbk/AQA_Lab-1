@@ -1,5 +1,4 @@
-﻿
-namespace SmallShop
+﻿namespace SmallShop
 {
     public class Program
     {

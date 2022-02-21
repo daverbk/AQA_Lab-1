@@ -11,7 +11,7 @@ namespace SmallShop
             var userFaker = new Faker<User>().RuleFor(x => x.FirstName, x => x.Person.FirstName)
                 .RuleFor(x => x.Age, x => x.Random.Int(Constats.PersonAge.Min, Constats.PersonAge.Max))
                 .RuleFor(x => x.PassportId, x => Guid.NewGuid())
-                .RuleFor(x => x.ShoppingCart, new List<Product>(products));
+                .RuleFor(x => x.ShoppingCart, x => new List<Product>(products));
 
             return userFaker.Generate(count);
         }
