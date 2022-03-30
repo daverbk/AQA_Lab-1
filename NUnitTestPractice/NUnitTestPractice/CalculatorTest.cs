@@ -24,7 +24,7 @@ namespace NUnitTestPractice
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            Console.WriteLine($"\nCreated an instance of Calculator");
+            Console.WriteLine("Created an instance of Calculator");
             _calculator = new Calculator();
         }
 
@@ -33,7 +33,7 @@ namespace NUnitTestPractice
         [TestCase(-5, -3, -2)]
         [TestCase(1, -1, 2)]
         [TestCase(0, 0, 0)]
-        public void testSum(int result, int num1, int num2)
+        public void TestSum(int result, int num1, int num2)
         {
             var expected = result;
             var actual = _calculator.Sum(num1, num2);
@@ -47,7 +47,7 @@ namespace NUnitTestPractice
         [TestCase(-2, 4, -2)]
         [TestCase(-2, 6, -3)]
         [TestCase(2, 7, 3)]
-        public void testDiv_Int(int result, int num1, int num2)
+        public void TestIntDiv(int result, int num1, int num2)
         {
             var expected = result;
             var actual = _calculator.Div(num1, num2);
@@ -55,20 +55,25 @@ namespace NUnitTestPractice
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCaseSource(typeof(Data), nameof(Data.TestCases))]
-        [Ignore("Ignoring to use all of the mentioned during lecture attributes :)")]
-        public int testDiv_WithCaseSource(int n, int d)
-        {
-            return _calculator.Div(n, d);
-        }
-
         [Property("Priority", 5)]
         [Test]
-        public void When_DividedByZero_ThrowsException()
+        public void When_IntDividedByZero_ThrowsException()
         {
             Assert.Throws<DivideByZeroException>(delegate { _calculator.Div(0, 0); });
         }
-
+        
+        [Property("Priority", 5)]
+        [Test]
+        public void When_DoubleDividedByZero_ReturnsInfinity()
+        {
+            Assert.Multiple(() => 
+            {
+                Assert.True(Double.IsPositiveInfinity(_calculator.Div(8d, 0d)));
+                Assert.IsTrue(Double.IsNegativeInfinity(_calculator.Div(-8d, 0d)));
+                Assert.IsTrue(Double.IsNaN(_calculator.Div(0d, 0d)));
+            });
+        }
+        
         [Property("Priority", 5)]
         [TestCase(2, 6.6, 3.3)]
         [TestCase(-4.1, -8.2, 2)]
@@ -81,7 +86,9 @@ namespace NUnitTestPractice
 
             Assert.AreEqual(expected, actual);
         }
-
+        
+        // DEVNOTE: Next two methods are here just for practice purposes (as was mentioned in the task: to use all
+        // of the assertions and attributes we covered during the lecture).
         [Property("Priority", 0)]
         [Test]
         public void TestsForTheSakeOfAssertionsPractice()
@@ -99,25 +106,26 @@ namespace NUnitTestPractice
 
                 Assert.AreEqual(a / b, _calculator.Div(a, b));
                 Assert.AreEqual(3.7737556561085972d, _calculator.Div(8.34, 2.21));
-
-                Assert.True(Double.IsPositiveInfinity(_calculator.Div(8d, 0d)));
-                Assert.IsTrue(Double.IsNegativeInfinity(_calculator.Div(-8d, 0d)));
-                Assert.IsTrue(Double.IsNaN(_calculator.Div(0d, 0d)));
             });
 
             Assert.AreSame(_calculator, calc);
 
             var iLoveDogs = true;
-
             Assert.IsTrue(iLoveDogs);
-
             var myLoveToCats = 50;
             var myLoveToDogs = 100;
 
             Assert.Greater(myLoveToDogs, myLoveToCats);
-            //Assert.Pass();
+            Assert.Pass();
         }
 
+        [TestCaseSource(typeof(Data), nameof(Data.TestCases))]
+        [Ignore("Ignoring to use all of the mentioned during lecture attributes :)")]
+        public int TestDivWithCaseSource(int num1, int num2)
+        {
+            return _calculator.Div(num1, num2);
+        }
+        
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
