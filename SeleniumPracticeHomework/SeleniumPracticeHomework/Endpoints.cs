@@ -1,7 +1,13 @@
 namespace SeleniumPracticeHomework
 {
-    public class Endpoints
+    public static class Endpoints
     {
+        private const string LaminateCalculatorServiceUrl = "https://calc.by";
+        private const string LaminateCalculatorPrefix = "/building-calculators";
+        
+        public static readonly string LaminateCalculatorFullUrl =
+            $"{LaminateCalculatorServiceUrl}{LaminateCalculatorPrefix}/laminate.html";
+        
         private const string ElectricFloorServiceUrl = "https://kermi-fko.ru";
         private const string ElectricFloorPrefix = "/raschety";
 

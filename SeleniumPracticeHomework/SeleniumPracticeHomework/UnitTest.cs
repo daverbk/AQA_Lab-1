@@ -21,6 +21,41 @@ namespace SeleniumPracticeHomework
         }
 
         [Test]
+        public void SmokeTest2()
+        {
+            _driver.Navigate().GoToUrl(Endpoints.LaminateCalculatorFullUrl);
+            
+            var layingMethod = _driver.FindElement(By.Id("laying_method_laminate"));
+            var layingMethodDropDown = new SelectElement(layingMethod);
+            
+            var roomLength = _driver.FindElement(By.Id("ln_room_id"));
+            var roomWidth = _driver.FindElement(By.Id("wd_room_id"));
+            var laminateLength = _driver.FindElement(By.Id("ln_lam_id"));
+            var laminateWidth = _driver.FindElement(By.Id("wd_lam_id"));
+            var laminateDirection = _driver.FindElement(By.Id("direction-laminate-id1"));
+            var calculateButton = _driver.FindElement(By.ClassName("calc-btn-div")).FindElement(By.TagName("a"));
+
+            layingMethodDropDown.SelectByIndex(0);
+            ClearAndFill(roomLength, "500");
+            ClearAndFill(roomWidth, "400");
+            ClearAndFill(laminateLength, "2000");
+            ClearAndFill(laminateWidth, "200");
+            
+            laminateDirection.Click();
+            calculateButton.Click();
+            Thread.Sleep(ThreeSecondWait);
+
+            var laminatePieces = _driver.FindElement(By.XPath("//*[contains(text(), 'досок')]/span"));
+            var laminatePacks = _driver.FindElement(By.XPath("//*[contains(text(), 'упаковок')]/span"));
+            
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual("51", laminatePieces.Text);
+                Assert.AreEqual("7", laminatePacks.Text);
+            });
+        }
+        
+        [Test]
         public void TestElectricFloorHeatingCalculator()
         {
             _driver.Navigate().GoToUrl(Endpoints.ElectricFloorHeatingCalculatorFullUrl);
