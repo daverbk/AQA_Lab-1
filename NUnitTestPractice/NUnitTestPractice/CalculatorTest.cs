@@ -29,11 +29,13 @@ namespace NUnitTestPractice
         }
 
         [Property("Priority", 5)]
-        [TestCase(5, 1, 4)]
-        [TestCase(-5, -3, -2)]
-        [TestCase(1, -1, 2)]
+        [TestCase(1, 4, 5)]
+        [TestCase(-3, -2, -5)]
+        [TestCase(-1, 2, 1)]
+        [TestCase(1, -2, -1)]
+        [TestCase(-2, 1, -1)]
         [TestCase(0, 0, 0)]
-        public void TestSum(int result, int num1, int num2)
+        public void TestSum(int num1, int num2, int result)
         {
             var expected = result;
             var actual = _calculator.Sum(num1, num2);
@@ -42,12 +44,11 @@ namespace NUnitTestPractice
         }
 
         [Property("Priority", 5)]
-        [TestCase(4, 8, 2)]
-        [TestCase(2, -10, -5)]
-        [TestCase(-2, 4, -2)]
-        [TestCase(-2, 6, -3)]
-        [TestCase(2, 7, 3)]
-        public void TestIntDiv(int result, int num1, int num2)
+        [TestCase(8, 2, 4)]
+        [TestCase(-10, -5, 2)]
+        [TestCase(6, -3, -2)]
+        [TestCase(7, 3, 2)]
+        public void TestDivInt(int num1, int num2, int result)
         {
             var expected = result;
             var actual = _calculator.Div(num1, num2);
@@ -55,14 +56,27 @@ namespace NUnitTestPractice
             Assert.AreEqual(expected, actual);
         }
 
-        [Property("Priority", 5)]
+        [Property("Priority", 4)]
         [Test]
         public void When_IntDividedByZero_ThrowsException()
         {
             Assert.Throws<DivideByZeroException>(delegate { _calculator.Div(0, 0); });
         }
-        
+
         [Property("Priority", 5)]
+        [TestCase(6.6, 3.3, 2)]
+        [TestCase(-8.2, 2, -4.1)]
+        [TestCase(3.3, -1, -3.3)]
+        [TestCase(5.5, 0.1, 55)]
+        public void TestDivDouble(double num1, double num2, double result)
+        {
+            var expected = result;
+            var actual = _calculator.Div(num1, num2);
+
+            Assert.AreEqual(expected, actual);
+        }
+        
+        [Property("Priority", 4)]
         [Test]
         public void When_DoubleDividedByZero_ReturnsInfinity()
         {
@@ -74,22 +88,9 @@ namespace NUnitTestPractice
             });
         }
         
-        [Property("Priority", 5)]
-        [TestCase(2, 6.6, 3.3)]
-        [TestCase(-4.1, -8.2, 2)]
-        [TestCase(-3.3, 3.3, -1)]
-        [TestCase(55, 5.5, 0.1)]
-        public void TestDiv_Double(double result, double num1, double num2)
-        {
-            var expected = result;
-            var actual = _calculator.Div(num1, num2);
-
-            Assert.AreEqual(expected, actual);
-        }
-        
         // DEVNOTE: Next two methods are here just for practice purposes (as was mentioned in the task: to use all
         // of the assertions and attributes we covered during the lecture).
-        [Property("Priority", 0)]
+        [Property("Priority", 1)]
         [Test]
         public void TestsForTheSakeOfAssertionsPractice()
         {
