@@ -7,12 +7,11 @@ namespace PageObjectHomework.Pages
     public class LoginPage : BasePage
     {
         private const string Endpoint = "/";
-        // Locators description
+        
         private static readonly By UserNameInputLocator = By.Id("user-name");
         private static readonly By PasswordInputLocator = By.Id("password");
         private static readonly By LoginButtonLocator = By.Id("login-button");
-
-        // Constructor
+        
         public LoginPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
         {
         }
@@ -34,7 +33,6 @@ namespace PageObjectHomework.Pages
             }
         }
         
-        // Elements
         public IWebElement UserNameInput => Driver.FindElement(UserNameInputLocator);
         public IWebElement PasswordInput => Driver.FindElement(PasswordInputLocator);
         public IWebElement LoginButton => Driver.FindElement(LoginButtonLocator);
