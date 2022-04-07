@@ -6,6 +6,8 @@ namespace PageObjectHomework.Tests
 {
     public class EndToEndTest : BaseTest
     {
+        private const string RemoveButtonClassValue = "btn btn_secondary btn_small btn_inventory";
+    
         [Test]
         [Category("EndToEnd")]
         public void EndToEnd_StandardUser()
@@ -20,8 +22,7 @@ namespace PageObjectHomework.Tests
             Assert.AreEqual("PRODUCTS", productsPage.PageName.Text);
 
             productsPage.FirstGoodAddToCartButton.Click();
-            Assert.AreEqual("btn btn_secondary btn_small btn_inventory",
-                productsPage.FirstGoodAddToCartButton.GetAttribute("class"));
+            Assert.AreEqual(RemoveButtonClassValue, productsPage.FirstGoodAddToCartButton.GetAttribute("class"));
             productsPage.CartButton.Click();
 
             var cartPage = new CartPage(Driver, false);
@@ -47,7 +48,7 @@ namespace PageObjectHomework.Tests
 
             checkoutCompletePage.BackHomeButton.Click();
             
-            Assert.IsTrue(productsPage.PageName.Displayed);
+            Assert.AreEqual("PRODUCTS", productsPage.PageName.Text);
         }
     }
 }
