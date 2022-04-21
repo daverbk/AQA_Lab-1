@@ -1,0 +1,44 @@
+{
+  "uuid": "f136c022-18c6-438a-9ed0-cbba1b3a08f7-tc-0-1000",
+  "name": "AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser",
+  "children": [
+    "ed6ed602-d431-42e0-86f7-c3fa558de6ea-tr-0-1001"
+  ],
+  "befores": [
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1650557938241,
+      "stop": 1650557938241
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1650557938242,
+      "stop": 1650557938242
+    }
+  ],
+  "links": [],
+  "start": 1650557928052,
+  "stop": 1650557938359
+}

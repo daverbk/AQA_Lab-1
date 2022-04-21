@@ -1,0 +1,169 @@
+{
+  "uuid": "fb7c45e9-ef18-4384-b38c-9ead66c13c05-tr-0-1001",
+  "historyId": "AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser",
+  "fullName": "AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "MacBook-Air-KSUSHA"
+    },
+    {
+      "name": "package",
+      "value": "AllureExtensionsFluentAssertionsHomework.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "EndToEnd_StandardUser"
+    },
+    {
+      "name": "testClass",
+      "value": "EndToEndTest"
+    },
+    {
+      "name": "tag",
+      "value": "EndToEnd"
+    },
+    {
+      "name": "severity",
+      "value": "blocker"
+    },
+    {
+      "name": "tag",
+      "value": "E2E Critical path"
+    },
+    {
+      "name": "Priority",
+      "value": "High"
+    },
+    {
+      "name": "suite",
+      "value": "E2E SauceDemo"
+    },
+    {
+      "name": "owner",
+      "value": "David Ryabko"
+    }
+  ],
+  "links": [],
+  "name": "EndToEnd_StandardUser",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "Expected CheckoutStepOnePage.PageName.Text.IsEqualTo(\"CHECKOUT: YOUR INFORMATION\") to be false, but found True.",
+    "trace": "   at FluentAssertions.Execution.LateBoundTestFramework.Throw(String message)\n   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)\n   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)\n   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)\n   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)\n   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)\n   at FluentAssertions.Primitives.BooleanAssertions`1.BeFalse(String because, Object[] becauseArgs)\n   at AllureExtensionsFluentAssertionsHomework.Steps.StandardUserSteps.<GoToCheckoutStepOneCheckIfOpens>b__6_0() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Steps/StandardUserSteps.cs:line 64\n   at NUnit.Allure.Core.AllureExtensions.WrapInStep(AllureLifecycle lifecycle, Action action, String stepName, String callerName)\n   at AllureExtensionsFluentAssertionsHomework.Steps.StandardUserSteps.GoToCheckoutStepOneCheckIfOpens() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Steps/StandardUserSteps.cs:line 60\n   at AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Tests/EndToEndTest.cs:line 28\n"
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "EndToEnd_StandardUser",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "Expected CheckoutStepOnePage.PageName.Text.IsEqualTo(\"CHECKOUT: YOUR INFORMATION\") to be false, but found True.",
+        "trace": "   at FluentAssertions.Execution.LateBoundTestFramework.Throw(String message)\n   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)\n   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)\n   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)\n   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)\n   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)\n   at FluentAssertions.Primitives.BooleanAssertions`1.BeFalse(String because, Object[] becauseArgs)\n   at AllureExtensionsFluentAssertionsHomework.Steps.StandardUserSteps.<GoToCheckoutStepOneCheckIfOpens>b__6_0() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Steps/StandardUserSteps.cs:line 64\n   at NUnit.Allure.Core.AllureExtensions.WrapInStep(AllureLifecycle lifecycle, Action action, String stepName, String callerName)\n   at AllureExtensionsFluentAssertionsHomework.Steps.StandardUserSteps.GoToCheckoutStepOneCheckIfOpens() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Steps/StandardUserSteps.cs:line 60\n   at AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Tests/EndToEndTest.cs:line 28\n"
+      },
+      "stage": "finished",
+      "steps": [
+        {
+          "name": "Insert username: standard_user and password: secret_sauce",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1650571353169,
+          "stop": 1650571354913
+        },
+        {
+          "name": "Check Products page is opened",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1650571354913,
+          "stop": 1650571355469
+        },
+        {
+          "name": "SelectAnItemAndCheckButtonChange",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1650571355469,
+          "stop": 1650571355584
+        },
+        {
+          "name": "Go to Cart page",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1650571355584,
+          "stop": 1650571355756
+        },
+        {
+          "name": "Go to Checkout step one",
+          "status": "broken",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false,
+            "message": "Expected CheckoutStepOnePage.PageName.Text.IsEqualTo(\"CHECKOUT: YOUR INFORMATION\") to be false, but found True.",
+            "trace": "   at FluentAssertions.Execution.LateBoundTestFramework.Throw(String message)\n   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)\n   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)\n   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)\n   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)\n   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)\n   at FluentAssertions.Primitives.BooleanAssertions`1.BeFalse(String because, Object[] becauseArgs)\n   at AllureExtensionsFluentAssertionsHomework.Steps.StandardUserSteps.<GoToCheckoutStepOneCheckIfOpens>b__6_0() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Steps/StandardUserSteps.cs:line 64\n   at NUnit.Allure.Core.AllureExtensions.WrapInStep(AllureLifecycle lifecycle, Action action, String stepName, String callerName)"
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1650571355757,
+          "stop": 1650571356278
+        }
+      ],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "8aee0c19f737408abcb40a226d12bc40-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1650571346202,
+      "stop": 1650571356491
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1650571346198,
+  "stop": 1650571356512
+}
