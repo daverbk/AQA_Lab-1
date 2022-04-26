@@ -30,7 +30,7 @@ namespace WrappersHomework.Pages
             CheckIfPageOpened();
         }
 
-        protected abstract void NavigateToPage();
+        public abstract void NavigateToPage();
         
         public abstract bool CheckIfPageOpened();
     }

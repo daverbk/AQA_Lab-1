@@ -6,8 +6,6 @@ namespace WrappersHomework.Services
 {
     public class BrowserService
     {
-        private readonly IWebDriver _driver;
-
         public IWebDriver Driver { get; set; }
 
         public BrowserService()

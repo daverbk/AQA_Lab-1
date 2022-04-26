@@ -4,13 +4,13 @@ namespace WrappersHomework.Services.Configuration
 {
     public static class AppSettings
     {
-        private static readonly IConfigurationSection AppSettingsJsonClass =
+        private static readonly IConfigurationSection AppSettingsJsonSection =
             Configurator.Configuration.GetSection(nameof(AppSettings));
     
-        public static string BaseUrl => AppSettingsJsonClass["BaseUrl"];
+        public static string BaseUrl => AppSettingsJsonSection["BaseUrl"];
     
-        public static string BrowserType => AppSettingsJsonClass["BrowserType"];
+        public static string BrowserType => AppSettingsJsonSection["BrowserType"];
     
-        public static int WaitTimeout => int.Parse(AppSettingsJsonClass["WaitTimeout"]);
+        public static int WaitTimeout => int.Parse(AppSettingsJsonSection["WaitTimeout"]);
     }
 }

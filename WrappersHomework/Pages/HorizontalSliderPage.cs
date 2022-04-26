@@ -20,7 +20,7 @@ namespace WrappersHomework.Pages
         {
         }
 
-        protected override void NavigateToPage()
+        public override void NavigateToPage()
         {
             Driver.Navigate().GoToUrl(AppSettings.BaseUrl + Endpoint);
         }
@@ -31,7 +31,7 @@ namespace WrappersHomework.Pages
             {
                 return Slider.Displayed;
             }
-            catch (TimeoutException timeoutException)
+            catch (TimeoutException)
             {
                 throw new AssertionException("The page wasn't opened.");
             }

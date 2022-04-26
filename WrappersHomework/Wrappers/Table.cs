@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using OpenQA.Selenium;
+using WrappersHomework.Wrappers.Enums;
 
 namespace WrappersHomework.Wrappers
 {
@@ -25,11 +26,11 @@ namespace WrappersHomework.Wrappers
             _javaScriptExecutor = (IJavaScriptExecutor) _driver;
         }
 
-        public IWebElement GetElementFromActionsCells(string rowName, string actionType)
+        public IWebElement GetElementFromActionsCells(string rowName, ActionType actionType)
         {
             var cellWithAction = GetCellElement("Action", rowName.Trim());
             
-            return cellWithAction.FindElement(By.XPath($"//*[text() = '{actionType.Trim()}']"));
+            return cellWithAction.FindElement(By.XPath($"//*[text() = '{actionType.ToString()}']"));
         }
         
         public IWebElement GetCellElement(string columnName, string rowName)

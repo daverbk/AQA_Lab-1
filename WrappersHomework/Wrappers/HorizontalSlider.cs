@@ -17,7 +17,7 @@ namespace WrappersHomework.Wrappers
         
         public bool Displayed => _baseElementWrapper.Displayed;
 
-        private IWebElement SliderValue => _driver.FindElement(By.CssSelector("span[id = 'range']"));
+        private IWebElement CurrentSliderValue => _driver.FindElement(By.CssSelector("span[id = 'range']"));
         
         public HorizontalSlider(IWebDriver driver, By @by)
         {
@@ -28,36 +28,29 @@ namespace WrappersHomework.Wrappers
 
         public void SetSliderToMaxValue()
         {
-            if (decimal.Parse(SliderValue.Text.Trim()) != SliderMinValue)
+            if (decimal.Parse(CurrentSliderValue.Text.Trim()) != SliderMinValue)
             {   
                 SetSliderToMinValue();
             }
             
             SetSliderToValue(SliderMaxValue);
         }
-        
+
         public void SetSliderToValue(decimal valueToSet)
         {
-            if (valueToSet is > SliderMaxValue or < SliderMinValue)
+            if (valueToSet is > SliderMaxValue or < SliderMinValue || valueToSet % DefaultStepSize != 0)
             {
-                throw new ArgumentException($"Value can't be less than {SliderMinValue} or bigger than {SliderMaxValue}.");
+                throw new ArgumentException(
+                    $"Value can't be less than {SliderMinValue} or bigger than {SliderMaxValue}. The only allowed fraction is {DefaultStepSize}.");
             }
 
-            if (valueToSet % DefaultStepSize != 0)
-            {
-                throw new ArgumentException($"The only allowed fraction is {DefaultStepSize}.");
-            }
-            
             if (valueToSet == SliderMinValue)
             {
                 SetSliderToMinValue();
                 return;
             }
             
-            if (decimal.Parse(SliderValue.Text.Trim()) != SliderMinValue)
-            {
-                SetSliderToMinValue();
-            }
+            SetSliderToMinValue();
             
             _javaScriptExecutor.ExecuteScript(
                 $"document.querySelectorAll('input[type = \"range\"]')[{FirstElementIndex}].setAttribute(\"step\", {valueToSet});");
@@ -66,9 +59,12 @@ namespace WrappersHomework.Wrappers
 
         public void SetSliderToMinValue()
         {
-            _javaScriptExecutor.ExecuteScript(
-                $"document.querySelectorAll('input[type = \"range\"]')[{FirstElementIndex}].setAttribute(\"step\", {StepSizeToRollBackToZero});");
-            _baseElementWrapper.SendKeys(Keys.ArrowLeft);
+            if (decimal.Parse(CurrentSliderValue.Text.Trim()) != SliderMinValue)
+            {
+                _javaScriptExecutor.ExecuteScript(
+                    $"document.querySelectorAll('input[type = \"range\"]')[{FirstElementIndex}].setAttribute(\"step\", {StepSizeToRollBackToZero});");
+                _baseElementWrapper.SendKeys(Keys.ArrowLeft);
+            }
         }
     }
 }

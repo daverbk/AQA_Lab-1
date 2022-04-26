@@ -1,33 +1,32 @@
 using System;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using WrappersHomework.Services.Configuration;
 using WrappersHomework.Wrappers;
 
 namespace WrappersHomework.Pages
 {
-    public class TablePage : BasePage
+    public class TestRailCasesPage: BasePage
     {
-        private const string Endpoint = "/challenging_dom";
+        private const string Endpoint = "https://aqa18.testrail.io/index.php?/suites/view/22";
     
-        private static readonly By TableLocator = By.TagName("table");
+        private static readonly By DropDownLocator = By.Id("reportDropdown");
 
-        public Table Table => new(Driver, TableLocator);
-    
-        public TablePage(IWebDriver driver) : base(driver)
+        public DropDown DropDown => new(Driver, DropDownLocator);
+
+        public TestRailCasesPage(IWebDriver driver) : base(driver)
         {
         }
 
         public override void NavigateToPage()
         {
-            Driver.Navigate().GoToUrl(AppSettings.BaseUrl + Endpoint);
+            Driver.Navigate().GoToUrl(Endpoint);
         }
 
         public override bool CheckIfPageOpened()
         {
             try
             {
-                return Table.Displayed;
+                return DropDown.Displayed;
             }
             catch (TimeoutException)
             {
