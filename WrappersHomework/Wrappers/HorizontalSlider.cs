@@ -5,14 +5,15 @@ namespace WrappersHomework.Wrappers
 {
     public class HorizontalSlider
     {
-        private BaseElementWrapper _baseElementWrapper;
-        private IWebDriver _driver;
-        private IJavaScriptExecutor _javaScriptExecutor;
+        private readonly BaseElementWrapper _baseElementWrapper;
+        private readonly IWebDriver _driver;
+        private readonly IJavaScriptExecutor _javaScriptExecutor;
 
-        private const int StepSizeToRollBackToZero = 5;
         private const int FirstElementIndex = 0;
-        private const int SliderMaxValue = 5;
-        private const int SliderMinValue = 0;
+        private const decimal StepSizeToRollBackToZero = 5.0m;
+        private const decimal DefaultStepSize = 0.5m;
+        public const decimal SliderMaxValue = 5.0m;
+        public const decimal SliderMinValue = 0.0m;
         
         public bool Displayed => _baseElementWrapper.Displayed;
 
@@ -27,7 +28,7 @@ namespace WrappersHomework.Wrappers
 
         public void SetSliderToMaxValue()
         {
-            if ((int.Parse(SliderValue.Text) != SliderMinValue))
+            if (decimal.Parse(SliderValue.Text.Trim()) != SliderMinValue)
             {   
                 SetSliderToMinValue();
             }
@@ -35,20 +36,25 @@ namespace WrappersHomework.Wrappers
             SetSliderToValue(SliderMaxValue);
         }
         
-        public void SetSliderToValue(int valueToSet)
+        public void SetSliderToValue(decimal valueToSet)
         {
             if (valueToSet is > SliderMaxValue or < SliderMinValue)
             {
-                throw new ArgumentException("Value can't be less than 0 or bigger than 5.");
+                throw new ArgumentException($"Value can't be less than {SliderMinValue} or bigger than {SliderMaxValue}.");
             }
 
+            if (valueToSet % DefaultStepSize != 0)
+            {
+                throw new ArgumentException($"The only allowed fraction is {DefaultStepSize}.");
+            }
+            
             if (valueToSet == SliderMinValue)
             {
                 SetSliderToMinValue();
                 return;
             }
             
-            if (int.Parse(SliderValue.Text) != SliderMinValue)
+            if (decimal.Parse(SliderValue.Text.Trim()) != SliderMinValue)
             {
                 SetSliderToMinValue();
             }

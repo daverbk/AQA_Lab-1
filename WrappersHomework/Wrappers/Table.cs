@@ -6,9 +6,9 @@ namespace WrappersHomework.Wrappers
 {
     public class Table
     {
-        private BaseElementWrapper _baseElementWrapper;
-        private IWebDriver _driver;
-        private IJavaScriptExecutor _javaScriptExecutor;
+        private readonly BaseElementWrapper _baseElementWrapper;
+        private readonly IWebDriver _driver;
+        private readonly IJavaScriptExecutor _javaScriptExecutor;
 
         private const int FirstElementIndex = 0;
         
@@ -22,14 +22,14 @@ namespace WrappersHomework.Wrappers
         {
             _baseElementWrapper = new BaseElementWrapper(driver, by);
             _driver = driver;
-            _javaScriptExecutor = (IJavaScriptExecutor) driver;
+            _javaScriptExecutor = (IJavaScriptExecutor) _driver;
         }
 
-        public IWebElement GetDeleteEditElement(string rowName, string actionType)
+        public IWebElement GetElementFromActionsCells(string rowName, string actionType)
         {
-            var cellWithAction = GetCellElement("Action", rowName);
+            var cellWithAction = GetCellElement("Action", rowName.Trim());
             
-            return cellWithAction.FindElement(By.XPath($"//*[text() = '{actionType}']"));
+            return cellWithAction.FindElement(By.XPath($"//*[text() = '{actionType.Trim()}']"));
         }
         
         public IWebElement GetCellElement(string columnName, string rowName)
@@ -39,18 +39,18 @@ namespace WrappersHomework.Wrappers
                 throw new ArgumentException("Arguments can't be null.");
             }
             
-            var targetColumn = _baseElementWrapper.FindElement(By.XPath($"//*[text() = '{columnName}']"));
+            var targetColumn = _baseElementWrapper.FindElement(By.XPath($"//*[text() = '{columnName.Trim()}']"));
             var cellIndex = Headers.IndexOf(targetColumn);
             
             var cellElement = _javaScriptExecutor.ExecuteScript(
                 "for (let index = 0; index < arguments[0].length; index++) {" + 
-                "if (arguments[0][index].cells[arguments[1]].innerText == arguments[2]) {" +
+                "if (arguments[0][index].cells[arguments[1]].innerText.trim() == arguments[2]) {" +
                 "return arguments[0][index].cells[arguments[3]];}" +
-                "}" , Rows, FirstElementIndex, rowName, cellIndex);
+                "}" , Rows, FirstElementIndex, rowName.Trim(), cellIndex);
 
             if (cellElement == null)
             {
-                throw new NotFoundException("The cell wasn't found. Check column and row names.");
+                throw new NotFoundException("The cell wasn't found. Check column and row's names.");
             }
 
             return (IWebElement)cellElement;
