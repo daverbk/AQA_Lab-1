@@ -1,47 +1,22 @@
-using System;
 using AllureExtensionsFluentAssertionsHomework.Services;
-using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace AllureExtensionsFluentAssertionsHomework.Pages
 {
     public abstract class BasePage
     {
-        [ThreadStatic] private static IWebDriver _driver;
-        private static WaitService _waitService;
-
-        public static IWebDriver Driver
-        {
-            get => _driver;
-            set => _driver = value ?? throw new ArgumentNullException(nameof(value));
-        }
+        private IWebDriver Driver { get; }
         
-        public static WaitService WaitService => _waitService;
+        protected static WaitService WaitService { get; private set; }
+
+        public bool PageOpened => WaitService.WaitUntilElementExists(GetPageIdentifier()).Displayed;
 
         protected BasePage(IWebDriver driver)
         {
-            _driver = driver;
-            _waitService = new WaitService(_driver);
+            Driver = driver;
+            WaitService = new WaitService(Driver);
         }
 
-        public void WaitUntilOpened()
-        {
-            var isPageOpenedIndicator = IsPageOpened();
-
-            if (!isPageOpenedIndicator)
-            {
-                throw new AssertionException("Page wasn't opened");
-            }
-        }
-
-        public void OpenAndWait()
-        {
-            OpenPage();
-            WaitUntilOpened();
-        }
-        
-        protected abstract bool IsPageOpened();
-        
-        protected abstract void OpenPage();
+        protected abstract By GetPageIdentifier();
     }
 }

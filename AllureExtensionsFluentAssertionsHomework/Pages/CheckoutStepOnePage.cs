@@ -1,13 +1,9 @@
-using System;
-using AllureExtensionsFluentAssertionsHomework.Services;
 using OpenQA.Selenium;
 
 namespace AllureExtensionsFluentAssertionsHomework.Pages
 {
     public class CheckoutStepOnePage : BasePage
     {
-        private const string Endpoint = "checkout-step-one.html/";
-        
         private static readonly By PageNameLocator = By.CssSelector("span[class = 'title']");
         private static readonly By ContinueButtonLocator = By.Id("continue");
         private static readonly By FirstNameTextBoxLocator = By.Id("first-name");
@@ -24,21 +20,9 @@ namespace AllureExtensionsFluentAssertionsHomework.Pages
         {
         }
 
-        protected override void OpenPage()
+        protected override By GetPageIdentifier()
         {
-            Driver.Navigate().GoToUrl(Configurator.BaseUrl + Endpoint);
-        }
-
-        protected override bool IsPageOpened()
-        {
-            try
-            {
-                return ContinueButton.Displayed;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return ContinueButtonLocator;
         }
     }
 }

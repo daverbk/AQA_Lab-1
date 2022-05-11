@@ -9,27 +9,26 @@ namespace AllureExtensionsFluentAssertionsHomework.Tests
     public class BaseTest
     {
         [ThreadStatic] private static IWebDriver _driver;
-        protected StandardUserSteps StandardUserSteps;
-        
-        
-        
+        protected LoginSteps LoginSteps;
+        protected ProductsSteps ProductsSteps;
+        protected CheckoutSteps CheckoutSteps;
+
         [SetUp]
         public void SetUp()
         {
             _driver = new BrowserService().Driver;
-            StandardUserSteps = new StandardUserSteps(_driver);
+
+            LoginSteps = new LoginSteps(_driver);
+            ProductsSteps = new ProductsSteps(_driver);
+            CheckoutSteps = new CheckoutSteps(_driver);
+
+            _driver.Navigate().GoToUrl(Configurator.BaseUrl);
         }
 
         [TearDown]
         public void TearDown()
         {
             _driver.Quit();
-        }
-
-        protected static IWebDriver Driver
-        {
-            get => _driver;
-            set => _driver = value ?? throw new ArgumentNullException(nameof(value));
         }
     }
 }

@@ -1,0 +1,224 @@
+{
+  "uuid": "52bb8b81-c561-4cad-b9f8-02b2410b46b6-tr-0-1001",
+  "historyId": "AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser",
+  "fullName": "AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "air-ksusha"
+    },
+    {
+      "name": "package",
+      "value": "AllureExtensionsFluentAssertionsHomework.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "EndToEnd_StandardUser"
+    },
+    {
+      "name": "testClass",
+      "value": "EndToEndTest"
+    },
+    {
+      "name": "tag",
+      "value": "EndToEnd"
+    },
+    {
+      "name": "severity",
+      "value": "blocker"
+    },
+    {
+      "name": "tag",
+      "value": "E2E Critical path"
+    },
+    {
+      "name": "Priority",
+      "value": "High"
+    },
+    {
+      "name": "suite",
+      "value": "E2E SauceDemo"
+    },
+    {
+      "name": "owner",
+      "value": "David Ryabko"
+    }
+  ],
+  "links": [],
+  "name": "EndToEnd_StandardUser",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "EndToEnd_StandardUser"
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "EndToEnd_StandardUser",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [
+        {
+          "name": "Insert username: standard_user and password: secret_sauce",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1651138913423,
+          "stop": 1651138917911
+        },
+        {
+          "name": "Check Products page is opened",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1651138917913,
+          "stop": 1651138918123
+        },
+        {
+          "name": "SelectAnItemAndCheckButtonChange",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1651138918123,
+          "stop": 1651138918240
+        },
+        {
+          "name": "Go to Cart page",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1651138918240,
+          "stop": 1651138918386
+        },
+        {
+          "name": "Go to Checkout step one",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1651138918386,
+          "stop": 1651138918606
+        },
+        {
+          "name": "Insert post information First name: Dave Last name: Davidson Postal code: 28031",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1651138918607,
+          "stop": 1651138919116
+        },
+        {
+          "name": "Go to Checkout step two",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1651138919116,
+          "stop": 1651138919398
+        },
+        {
+          "name": "Go to Checkout step two",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1651138919399,
+          "stop": 1651138919597
+        },
+        {
+          "name": "Go back to Products page",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1651138919597,
+          "stop": 1651138920278
+        }
+      ],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "45d0a43c303b4996a201b3e3e087b2ba-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1651138900605,
+      "stop": 1651138920451
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1651138900602,
+  "stop": 1651138920470
+}

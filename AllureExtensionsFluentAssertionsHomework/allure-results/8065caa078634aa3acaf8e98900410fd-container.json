@@ -1,0 +1,48 @@
+{
+  "uuid": "36d1ac03-75f2-43f3-b76a-d69609a6228d-tc-0-1000",
+  "name": "AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser",
+  "children": [
+    "f9084895-bab5-4c11-9cb6-bd4b9559cf8a-tr-0-1001"
+  ],
+  "befores": [
+    {
+      "name": "SetUp",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "System.Net.WebException : nodename nor servname provided, or not known (chromedriver.storage.googleapis.com:443)\n  ----> System.Net.Http.HttpRequestException : nodename nor servname provided, or not known (chromedriver.storage.googleapis.com:443)\n  ----> System.Net.Internals.SocketExceptionFactory+ExtendedSocketException : nodename nor servname provided, or not known\nTearDown : System.NullReferenceException : Object reference not set to an instance of an object.",
+        "trace": "   at System.Net.HttpWebRequest.GetResponse()\n   at WebDriverManager.DriverConfigs.Impl.ChromeConfig.GetLatestVersion(String url)\n   at WebDriverManager.DriverConfigs.Impl.ChromeConfig.GetLatestVersion()\n   at WebDriverManager.DriverManager.GetVersionToDownload(IDriverConfig config, String version)\n   at WebDriverManager.DriverManager.SetUpDriver(IDriverConfig config, String version, Architecture architecture)\n   at AllureExtensionsFluentAssertionsHomework.Services.DriverFactory.GetChromeDriver() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Services/DriverFactory.cs:line 22\n   at AllureExtensionsFluentAssertionsHomework.Services.BrowserService..ctor() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Services/BrowserService.cs:line 20\n   at AllureExtensionsFluentAssertionsHomework.Tests.BaseTest.SetUp() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Tests/BaseTest.cs:line 19\n--HttpRequestException\n   at System.Net.Http.ConnectHelper.Connect(String host, Int32 port, CancellationToken cancellationToken)\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\n--- End of stack trace from previous location ---\n   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\n   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\n   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\n   at System.Net.Http.HttpMessageHandlerStage.Send(HttpRequestMessage request, CancellationToken cancellationToken)\n   at System.Net.Http.SocketsHttpHandler.Send(HttpRequestMessage request, CancellationToken cancellationToken)\n   at System.Net.Http.HttpClientHandler.Send(HttpRequestMessage request, CancellationToken cancellationToken)\n   at System.Net.Http.HttpMessageInvoker.Send(HttpRequestMessage request, CancellationToken cancellationToken)\n   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)\n   at System.Net.Http.HttpClient.Send(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)\n   at System.Net.HttpWebRequest.SendRequest(Boolean async)\n   at System.Net.HttpWebRequest.GetResponse()\n--ExtendedSocketException\n   at System.Net.Dns.GetHostEntryOrAddressesCore(String hostName, Boolean justAddresses)\n   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)\n   at System.Net.Sockets.Socket.Connect(String host, Int32 port)\n   at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)\n   at System.Net.Http.ConnectHelper.Connect(String host, Int32 port, CancellationToken cancellationToken)\n--TearDown\n   at AllureExtensionsFluentAssertionsHomework.Tests.BaseTest.TearDown() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Tests/BaseTest.cs:line 31"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1652307165439,
+      "stop": 1652307165439
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "System.Net.WebException : nodename nor servname provided, or not known (chromedriver.storage.googleapis.com:443)\n  ----> System.Net.Http.HttpRequestException : nodename nor servname provided, or not known (chromedriver.storage.googleapis.com:443)\n  ----> System.Net.Internals.SocketExceptionFactory+ExtendedSocketException : nodename nor servname provided, or not known\nTearDown : System.NullReferenceException : Object reference not set to an instance of an object.",
+        "trace": "   at System.Net.HttpWebRequest.GetResponse()\n   at WebDriverManager.DriverConfigs.Impl.ChromeConfig.GetLatestVersion(String url)\n   at WebDriverManager.DriverConfigs.Impl.ChromeConfig.GetLatestVersion()\n   at WebDriverManager.DriverManager.GetVersionToDownload(IDriverConfig config, String version)\n   at WebDriverManager.DriverManager.SetUpDriver(IDriverConfig config, String version, Architecture architecture)\n   at AllureExtensionsFluentAssertionsHomework.Services.DriverFactory.GetChromeDriver() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Services/DriverFactory.cs:line 22\n   at AllureExtensionsFluentAssertionsHomework.Services.BrowserService..ctor() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Services/BrowserService.cs:line 20\n   at AllureExtensionsFluentAssertionsHomework.Tests.BaseTest.SetUp() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Tests/BaseTest.cs:line 19\n--HttpRequestException\n   at System.Net.Http.ConnectHelper.Connect(String host, Int32 port, CancellationToken cancellationToken)\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\n--- End of stack trace from previous location ---\n   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\n   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\n   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\n   at System.Net.Http.HttpMessageHandlerStage.Send(HttpRequestMessage request, CancellationToken cancellationToken)\n   at System.Net.Http.SocketsHttpHandler.Send(HttpRequestMessage request, CancellationToken cancellationToken)\n   at System.Net.Http.HttpClientHandler.Send(HttpRequestMessage request, CancellationToken cancellationToken)\n   at System.Net.Http.HttpMessageInvoker.Send(HttpRequestMessage request, CancellationToken cancellationToken)\n   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)\n   at System.Net.Http.HttpClient.Send(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)\n   at System.Net.HttpWebRequest.SendRequest(Boolean async)\n   at System.Net.HttpWebRequest.GetResponse()\n--ExtendedSocketException\n   at System.Net.Dns.GetHostEntryOrAddressesCore(String hostName, Boolean justAddresses)\n   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)\n   at System.Net.Sockets.Socket.Connect(String host, Int32 port)\n   at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)\n   at System.Net.Http.ConnectHelper.Connect(String host, Int32 port, CancellationToken cancellationToken)\n--TearDown\n   at AllureExtensionsFluentAssertionsHomework.Tests.BaseTest.TearDown() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Tests/BaseTest.cs:line 31"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1652307165440,
+      "stop": 1652307165440
+    }
+  ],
+  "links": [],
+  "start": 1652307165040,
+  "stop": 1652307165536
+}

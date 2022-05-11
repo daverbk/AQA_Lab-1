@@ -18,8 +18,9 @@ namespace AllureExtensionsFluentAssertionsHomework.Services
         
         public static string BaseUrl => Configuration[nameof(BaseUrl)];
         public static string BrowserType => Configuration[nameof(BrowserType)];
+        public static string UserName => Configuration[nameof(UserName)];
+        public static string Password => Configuration[nameof(Password)];
         public static int WaitTimeout => int.Parse(Configuration[nameof(WaitTimeout)]);
-        public static int WaitTimeoutLoops => int.Parse(Configuration[nameof(WaitTimeoutLoops)]);
 
         private static IConfiguration BuildConfiguration()
         {

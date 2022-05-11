@@ -1,13 +1,9 @@
-using System;
-using AllureExtensionsFluentAssertionsHomework.Services;
 using OpenQA.Selenium;
 
 namespace AllureExtensionsFluentAssertionsHomework.Pages
 {
     public class CartPage : BasePage
     {
-        private const string Endpoint = "cart.html/";
-        
         private static readonly By PageNameLocator = By.CssSelector("span[class = 'title']");
         private static readonly By CheckoutButtonLocator = By.Id("checkout");
         
@@ -17,22 +13,10 @@ namespace AllureExtensionsFluentAssertionsHomework.Pages
         public CartPage(IWebDriver driver) : base(driver)
         {
         }
-
-        protected override void OpenPage()
+        
+        protected override By GetPageIdentifier()
         {
-            Driver.Navigate().GoToUrl(Configurator.BaseUrl + Endpoint);
-        }
-
-        protected override bool IsPageOpened()
-        {
-            try
-            {
-                return  PageName.Displayed;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return CheckoutButtonLocator;
         }
     }
 }

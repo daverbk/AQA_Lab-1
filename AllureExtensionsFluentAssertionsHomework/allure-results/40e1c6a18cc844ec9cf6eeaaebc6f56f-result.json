@@ -1,0 +1,124 @@
+{
+  "uuid": "5139691e-a18c-4c73-ad7d-b7019a6f359b-tr-0-1001",
+  "historyId": "AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser",
+  "fullName": "AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "14"
+    },
+    {
+      "name": "host",
+      "value": "MacBook-Air-KSUSHA"
+    },
+    {
+      "name": "package",
+      "value": "AllureExtensionsFluentAssertionsHomework.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "EndToEnd_StandardUser"
+    },
+    {
+      "name": "testClass",
+      "value": "EndToEndTest"
+    },
+    {
+      "name": "tag",
+      "value": "EndToEnd"
+    },
+    {
+      "name": "severity",
+      "value": "blocker"
+    },
+    {
+      "name": "tag",
+      "value": "E2E Critical path"
+    },
+    {
+      "name": "Priority",
+      "value": "High"
+    },
+    {
+      "name": "suite",
+      "value": "E2E SauceDemo"
+    },
+    {
+      "name": "owner",
+      "value": "David Ryabko"
+    }
+  ],
+  "links": [],
+  "name": "EndToEnd_StandardUser",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "OpenQA.Selenium.StaleElementReferenceException : stale element reference: element is not attached to the page document\n  (Session info: chrome=99.0.4844.84)",
+    "trace": "   at OpenQA.Selenium.WebDriver.UnpackAndThrowOnError(Response errorResponse)\n   at OpenQA.Selenium.WebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\n   at OpenQA.Selenium.WebDriver.InternalExecute(String driverCommandToExecute, Dictionary`2 parameters)\n   at OpenQA.Selenium.WebElement.Execute(String commandToExecute, Dictionary`2 parameters)\n   at OpenQA.Selenium.WebElement.GetAttribute(String attributeName)\n   at AllureExtensionsFluentAssertionsHomework.Steps.ProductsSteps.<>c__DisplayClass1_0.<SelectProduct>b__0() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Steps/ProductsSteps.cs:line 21\n   at NUnit.Allure.Core.AllureExtensions.WrapInStep[T](AllureLifecycle lifecycle, Func`1 func, String stepName, String callerName)\n   at AllureExtensionsFluentAssertionsHomework.Steps.ProductsSteps.SelectProduct(Int32 productNumber) in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Steps/ProductsSteps.cs:line 16\n   at AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Tests/EndToEndTest.cs:line 36"
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "EndToEnd_StandardUser",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "OpenQA.Selenium.StaleElementReferenceException : stale element reference: element is not attached to the page document\n  (Session info: chrome=99.0.4844.84)",
+        "trace": "   at OpenQA.Selenium.WebDriver.UnpackAndThrowOnError(Response errorResponse)\n   at OpenQA.Selenium.WebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\n   at OpenQA.Selenium.WebDriver.InternalExecute(String driverCommandToExecute, Dictionary`2 parameters)\n   at OpenQA.Selenium.WebElement.Execute(String commandToExecute, Dictionary`2 parameters)\n   at OpenQA.Selenium.WebElement.GetAttribute(String attributeName)\n   at AllureExtensionsFluentAssertionsHomework.Steps.ProductsSteps.<>c__DisplayClass1_0.<SelectProduct>b__0() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Steps/ProductsSteps.cs:line 21\n   at NUnit.Allure.Core.AllureExtensions.WrapInStep[T](AllureLifecycle lifecycle, Func`1 func, String stepName, String callerName)\n   at AllureExtensionsFluentAssertionsHomework.Steps.ProductsSteps.SelectProduct(Int32 productNumber) in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Steps/ProductsSteps.cs:line 16\n   at AllureExtensionsFluentAssertionsHomework.Tests.EndToEndTest.EndToEnd_StandardUser() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Tests/EndToEndTest.cs:line 36"
+      },
+      "stage": "finished",
+      "steps": [
+        {
+          "name": "Insert username: standard_user and password: secret_sauce",
+          "status": "passed",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1652295746683,
+          "stop": 1652295747309
+        },
+        {
+          "name": "Select product number 1",
+          "status": "broken",
+          "statusDetails": {
+            "known": false,
+            "muted": false,
+            "flaky": false,
+            "message": "stale element reference: element is not attached to the page document\n  (Session info: chrome=99.0.4844.84)",
+            "trace": "   at OpenQA.Selenium.WebDriver.UnpackAndThrowOnError(Response errorResponse)\n   at OpenQA.Selenium.WebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\n   at OpenQA.Selenium.WebDriver.InternalExecute(String driverCommandToExecute, Dictionary`2 parameters)\n   at OpenQA.Selenium.WebElement.Execute(String commandToExecute, Dictionary`2 parameters)\n   at OpenQA.Selenium.WebElement.GetAttribute(String attributeName)\n   at AllureExtensionsFluentAssertionsHomework.Steps.ProductsSteps.<>c__DisplayClass1_0.<SelectProduct>b__0() in /Users/ksusha/RiderProjects/AllureExtensionsFluentAssertionsHomework/AllureExtensionsFluentAssertionsHomework/Steps/ProductsSteps.cs:line 21\n   at NUnit.Allure.Core.AllureExtensions.WrapInStep[T](AllureLifecycle lifecycle, Func`1 func, String stepName, String callerName)"
+          },
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1652295776242,
+          "stop": 1652295782533
+        }
+      ],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "ad65917db58a49aba61e965c0fa08a4f-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1652295740171,
+      "stop": 1652295783891
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1652295740169,
+  "stop": 1652295783899
+}

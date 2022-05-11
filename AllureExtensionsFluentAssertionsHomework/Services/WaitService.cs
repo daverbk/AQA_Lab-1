@@ -28,5 +28,10 @@ namespace AllureExtensionsFluentAssertionsHomework.Services
         {
             return _explicitWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator));
         }
+        
+        public IWebElement WaitUntilElementClickable(By locator)
+        {
+            return _explicitWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(locator));
+        }
     }
 }
