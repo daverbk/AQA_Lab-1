@@ -1,6 +1,8 @@
-***Task: to create e2e test for https://www.saucedemo.com/ regular user***
+# TASK:
 
-***Bugs found:***
+**Create e2e test for https://www.saucedemo.com/ regular user**
+
+**Bugs found:**
 
 1. **Products** - *The coursore doesn't change to a 'index figer' when hovering over cart icon.*
 2. **Cart** - *A user can proceed to order details even without any products in the cart.*
