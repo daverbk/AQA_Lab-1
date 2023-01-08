@@ -1,5 +1,8 @@
-namespace PhoneStore
+﻿using System;
+
+namespace PhoneStore.Models
 {
+    [Serializable]
     public class Phone
     {
         public string Model { get; set; }
@@ -8,20 +11,10 @@ namespace PhoneStore
 
         public string MarketLaunchDate { get; set; }
 
-        public int Price { get; set; }
+        public string Price { get; set; }
 
         public bool IsAvailable { get; set; }
 
         public int ShopId { get; set; }
-
-        public bool ShouldSerializeIsAvailable()
-        {
-            return false;
-        }
-
-        public bool ShouldSerializeShopId()
-        {
-            return false;
-        }
     }
 }

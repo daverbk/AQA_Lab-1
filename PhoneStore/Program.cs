@@ -1,22 +1,27 @@
-﻿using System;
+﻿using PhoneStore.Helpers;
+using PhoneStore.Models;
 
 namespace PhoneStore
 {
     public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var shops = WorkWithJson.DeserializeJson();
-            
-            Console.Clear();
-            Messages.PrintShopsInfo(shops);
-            
-            Messages.AskForPhoneModel();
-            var (shopsWherePhoneAvailable, userInputModel) = PhoneSearch.SearchPhoneUntilFound(shops);
-            
-            Messages.AskForShop(userInputModel);
-            var userInputShop = UserInput.AskInput();
-            ShopSearch.SearchShopUntilFound(shopsWherePhoneAvailable, userInputShop, userInputModel);
+            JsonParser.DeserializeJsonFile();
+            ConsoleRepresentationHelper.PrintGeneralShopInfo();
+
+            var phoneModel = ConsoleRepresentationHelper.GetPhoneModel();
+            var shopName = ConsoleRepresentationHelper.GetShop(phoneModel);
+            var finalPhone = PhonesHelper.GetPhone(shopName, phoneModel);
+
+            BillHelper.IssueBill(
+                new OrderReceipt
+                {
+                    PhoneModel = finalPhone.Model,
+                    PhonePrice = finalPhone.Price,
+                    MarketLaunchDate = finalPhone.MarketLaunchDate,
+                    Shop = shopName
+                });
         }
     }
 }

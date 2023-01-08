@@ -1,7 +1,9 @@
+﻿using System;
 using System.Collections.Generic;
 
-namespace PhoneStore
+namespace PhoneStore.Models
 {
+    [Serializable]
     public class Shop
     {
         public int Id { get; set; }
